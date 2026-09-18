@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Rapport de projet</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 40px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            margin-top: 45px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+
+        h3 {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        figure {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .placeholder {
+            color: #777;
+            font-style: italic;
+        }
+
+        .file {
+            font-family: monospace;
+            background-color: #f3f3f3;
+            padding: 2px 5px;
+        }
+
+        .hypothese {
+            margin: 15px 0;
+            padding: 10px 15px;
+            border-left: 4px solid #555;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================================= -->
+    <!-- EN-TÊTE -->
+    <!-- ========================================================= -->
+
+    <header>
+
+        <h1>Rapport — <span class="placeholder">DM1</span></h1>
+
+        <p>
+            <strong>Cours :</strong>
+            <span class="placeholder">IFT3911 - Analyse et conception des logiciels</span>
+        </p>
+
+        <p>
+            <strong>Session :</strong>
+            <span class="placeholder">Automne 2026</span>
+        </p>
+
+        <p>
+            <strong>Enseignant :</strong>
+            <span class="placeholder">Pascal Archambault</span>
+        </p>
+
+        <p>
+            <strong>Date de remise :</strong>
+            <span class="placeholder">5 octobre 2026</span>
+        </p>
+
+
+        <h2>Membres de l'équipe</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>4 derniers chiffres du matricule</th>
+                    <th>Courriel</th>
+                    <th>Temps consacré au devoir</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td class="placeholder">Angélique Defert</td>
+                    <td class="placeholder">[XXXX]</td>
+                    <td class="placeholder">
+                        <a href="mailto:exemple@umontreal.ca">angelique.defert@umontreal.ca</a>
+                    </td>
+                    <td class="placeholder">[Temps]</td>
+                </tr>
+
+                <tr>
+                    <td class="placeholder">Hugo Bouchard</td>
+                    <td class="placeholder">4787</td>
+                    <td class="placeholder">
+                        <a href="mailto:exemple@umontreal.ca">hugo.bouchard.2@umontreal.ca</a>
+                    </td>
+                    <td class="placeholder">[Temps]</td>
+                </tr>
+
+                <tr>
+                    <td class="placeholder">Raphaël Tremblay</td>
+                    <td class="placeholder">[XXXX]</td>
+                    <td class="placeholder">
+                        <a href="mailto:exemple@umontreal.ca">raphael.tremblay.3@umontreal.ca</a>
+                    </td>
+                    <td class="placeholder">[Temps]</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </header>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. INTRODUCTION -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>1. Introduction</h2>
+
+        <p class="placeholder">
+            Le but de ce devoir est de mettre en pratique nos techniques de conceptions orientées-objet en concevant 
+            un logiciel de gestion de réservation de voyages par avion, paquebot et train. Ce premier devoir consiste à
+            réaliser le modèle de conception du domaine (diagramme de classe conceptuel et diagrammes de séquence système)
+            ainsi que le design du logiciel (diagramme de classe, diagrammes de séquence, diagramme de paquets et contraintes OCL).
+        </p>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. DISTRIBUTION DES TÂCHES -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>2. Distribution des tâches</h2>
+
+        <p>
+            Cette section présente toutes les tâches accomplies et la
+            contribution de chaque membre de l'équipe pour chacune d'elles.
+        </p>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Tâche</th>
+                    <th>Angélique Defert</th>
+                    <th>Hugo Bouchard</th>
+                    <th>Raphaël Tremblay</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Diagramme de classe conceptuel [20 %]</td>
+                    <td>0 %</td>
+                    <td>0 %</td>
+                    <td>100 %</td>
+                </tr>
+
+                <tr>
+                    <td>Diagrammes de séquence système (DSS) [10 %]</td>
+                    <td>0 %</td>
+                    <td>100 %</td>
+                    <td>0 %</td>
+                </tr>
+
+                <tr>
+                    <td>Diagramme de classe [25 %]</td>
+                    <td>100 %</td>
+                    <td>0 %</td>
+                    <td>0 %</td>
+                </tr>
+
+                <tr>
+                    <td>Diagrammes de séquence [15 %]</td>
+                    <td>33 %</td>
+                    <td>33 %</td>
+                    <td>33 %</td>
+                </tr>
+
+                <tr>
+                    <td>Diagramme de paquets [5 %]</td>
+                    <td>0 %</td>
+                    <td>0 %</td>
+                    <td>100 %</td>
+                </tr>
+
+                <tr>
+                    <td>Contraintes OCL [15 %]</td>
+                    <td>0 %</td>
+                    <td>100 %</td>
+                    <td>0 %</td>
+                </tr>
+
+                <tr>
+                    <td>Justifications [10 %]</td>
+                    <td>33 %</td>
+                    <td>33 %</td>
+                    <td>33 %</td>
+                </tr>
+
+                <tr>
+                    <td>Total du travail (selon les % du barème)</td>
+                    <td>33 %</td>
+                    <td>33 %</td>
+                    <td>33 %</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. HYPOTHÈSES -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>3. Hypothèses</h2>
+
+        <div class="hypothese" id="hypo1">
+            <strong>Hypothèse 1 :</strong>
+            <span class="placeholder">
+                Un voyage sans aucune place disponible est considéré comme inexistant pour l'utilisateur, autrement dit
+                il ne s'affichera pas et ne sera pas disponible.
+            </span>
+        </div>
+
+        <div class="hypothese" id="hypo2">
+            <strong>Hypothèse 2 :</strong>
+            <span class="placeholder">
+                Si une section est complète, peu importe le mode de transport, l'option de la sélectionner
+                ne sera pas disponible à l'utilisateur.
+            </span>
+        </div>
+
+        <div class="hypothese" id="hypo3">
+            <strong>Hypothèse 3 :</strong>
+            <span class="placeholder">[Description de l'hypothèse]</span>
+        </div>
+
+        <div class="hypothese" id="hypo4">
+            <strong>Hypothèse 4 :</strong>
+            <span class="placeholder">[Description de l'hypothèse]</span>
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. TÂCHE 1 -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>4. Tâche 1 — <span class="placeholder">Diagramme de classe conceptuel</span></h2>
+
+
+        <h3>4.1 Fichiers concernés</h3>
+
+        <ul>
+            <li class="file">[fichier]</li>
+            <li class="file">[fichier]</li>
+        </ul>
+
+
+        <h3>4.2 Résultats</h3>
+
+        <figure>
+
+            <img src="images/[image-tache-1.png]"
+                 alt="[Description de l'image]">
+
+            <figcaption>
+                Figure 1 — <span class="placeholder">[Description]</span>
+            </figcaption>
+
+        </figure>
+
+
+        <h3>4.3 Justification des choix</h3>
+
+        <p class="placeholder">
+            [Expliquer les choix effectués et les raisons de ces choix.]
+        </p>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. TÂCHE 2 -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>5. Tâche 2 — <span class="placeholder">Diagrammes de séquence système (DSS)</span></h2>
+
+
+        <h3>5.1 Fichiers concernés</h3>
+
+        <ul>
+            <li class="file">
+                <a href="./domaine/diagrammes/DSS.vpp">Fichier .vpp</a>
+            </li>
+        </ul>
+
+
+        <h3>5.2 Résultats</h3>
+
+        <figure>
+
+            <img src="./domaine/diagrammes/Verification voyages.svg"
+                 alt="[Vérification des voyages]">
+
+            <figcaption>
+                Figure 2.1 — <span class="placeholder">DSS pour la vérification des voyages</span>
+            </figcaption>
+
+        </figure>
+
+        <figure>
+
+            <img src="./domaine/diagrammes/Reserver place.svg"
+                 alt="[Réservation des voyages]">
+
+            <figcaption>
+                Figure 2.2 — <span class="placeholder">DSS pour la réservation des voyages</span>
+            </figcaption>
+
+        </figure>
+
+        <figure>
+
+            <img src="./domaine/diagrammes/Payer reservation.svg"
+                 alt="[Paiement des voyages]">
+
+            <figcaption>
+                Figure 2.3 — <span class="placeholder">DSS pour le paiement des voyages</span>
+            </figcaption>
+
+        </figure>
+
+
+        <h3>5.3 Justification des choix</h3>
+
+        <p class="placeholder">
+            <a href="#hypo1">L'hypothèse 1</a> existe de sorte à éviter que, lors de la réservation des voyages
+            par l'utilisateur, il soit nécessaire de vérifier s'il y a des places disponibles. Si l'utilisateur
+            est rendu à l'étape de réserver, on est assuré de savoir qu'il y a au moins une place disponible et donc
+            que c'est valide et il pourra directement sélectionner une section. Cela amène à <a href="#hypo2">l'hypothèse 2</a>.
+            Celle-ci existe pour éviter que l'utilisateur puisse sélectionner une section sans place disponible et de
+            devoir envoyer un message d'erreur et/ou de lui assigner une place dans une section que l'utilisateur ne désire
+            pas. On s'assure ainsi que l'utilisateur sait d'emblée quelle section il aura.
+        </p>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. TÂCHE 3 -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>6. Tâche 3 — <span class="placeholder">[Nom de la tâche]</span></h2>
+
+
+        <h3>6.1 Fichiers concernés</h3>
+
+        <ul>
+            <li class="file">[fichier]</li>
+            <li class="file">[fichier]</li>
+        </ul>
+
+
+        <h3>6.2 Résultats</h3>
+
+        <figure>
+
+            <img src="images/[image-tache-3.png]"
+                 alt="[Description de l'image]">
+
+            <figcaption>
+                Figure 3 — <span class="placeholder">[Description]</span>
+            </figcaption>
+
+        </figure>
+
+
+        <h3>6.3 Justification des choix</h3>
+
+        <p class="placeholder">
+            [Expliquer les choix effectués et les raisons de ces choix.]
+        </p>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. CONCLUSION -->
+    <!-- ========================================================= -->
+
+    <section>
+
+        <h2>7. Conclusion</h2>
+
+        <p class="placeholder">
+            test
+        </p>
+
+    </section>
+
+
+
+
+</body>
+</html>
