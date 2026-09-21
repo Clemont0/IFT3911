@@ -147,9 +147,9 @@
 
                 <tr>
                     <td class="placeholder">Raphaël Tremblay</td>
-                    <td class="placeholder">[XXXX]</td>
+                    <td class="placeholder">0319</td>
                     <td class="placeholder">
-                        <a href="mailto:exemple@umontreal.ca">raphael.tremblay.3@umontreal.ca</a>
+                        <a href="mailto:raphael.tremblay.3@umontreal.ca">raphael.tremblay.3@umontreal.ca</a>
                     </td>
                     <td class="placeholder">[Temps]</td>
                 </tr>
@@ -209,7 +209,7 @@
             <tbody>
 
                 <tr>
-                    <td>Diagramme de classe conceptuel [20 %]</td>
+                    <td>Diagramme de classes conceptuel [20 %]</td>
                     <td>0 %</td>
                     <td>0 %</td>
                     <td>100 %</td>
@@ -298,7 +298,8 @@
 
         <div class="hypothese" id="hypo3">
             <strong>Hypothèse 3 :</strong>
-            <span class="placeholder">[Description de l'hypothèse]</span>
+            <span class="placeholder">Nous supposons qu’un train physique appartient à une seule ligne de train
+                et qu’il peut être assigné à plusieurs trajets.</span>
         </div>
 
         <div class="hypothese" id="hypo4">
@@ -315,14 +316,15 @@
 
     <section>
 
-        <h2>4. Tâche 1 — <span class="placeholder">Diagramme de classe conceptuel</span></h2>
+        <h2>4. Tâche 1 — <span class="placeholder">Diagramme de classes conceptuel</span></h2>
 
 
         <h3>4.1 Fichiers concernés</h3>
 
         <ul>
-            <li class="file">[fichier]</li>
-            <li class="file">[fichier]</li>
+            <li class="file">
+                <a href="./domaine/diagrammes/DiagrammeDeClassesConceptuel.vpp">DiagrammeDeClassesConceptuel.vpp</a>
+            </li>
         </ul>
 
 
@@ -330,11 +332,11 @@
 
         <figure>
 
-            <img src="images/[image-tache-1.png]"
-                 alt="[Description de l'image]">
+            <img src="./domaine/diagrammes/DiagrammeDeClassesConceptuel.svg"
+                 alt="Diagramme de classes conceptuel du système de réservation de voyages">
 
             <figcaption>
-                Figure 1 — <span class="placeholder">[Description]</span>
+                Figure 1 — <span class="placeholder">Diagramme de classes conceptuel</span>
             </figcaption>
 
         </figure>
@@ -343,7 +345,21 @@
         <h3>4.3 Justification des choix</h3>
 
         <p class="placeholder">
-            [Expliquer les choix effectués et les raisons de ces choix.]
+            Les classes Vol, Itineraire et Trajet sont généralisées sous Voyage afin
+            de regrouper leurs caractéristiques communes. De même, Aeroport, Port et
+            Gare sont regroupés sous Lieu.
+        </p>
+        
+        <p class="placeholder">
+            Les classes Escale et Arret permettent de conserver l'ordre des ports et
+            des gares visités. Enfin, UniteReservable généralise les sièges et les
+            cabines afin de représenter uniformément l'élément associé à une réservation.
+        </p>
+
+        <p class="placeholder">
+            Comme indiqué dans <a href="#hypo3">l' hypothèse 3</a>, le modèle suppose qu’un train appartient à une seule ligne de
+            train et que le prix d’une section correspond au prix applicable dans le
+            contexte du véhicule et de la compagnie concernés.
         </p>
 
     </section>
