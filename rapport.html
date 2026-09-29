@@ -304,7 +304,11 @@
 
         <div class="hypothese" id="hypo4">
             <strong>Hypothèse 4 :</strong>
-            <span class="placeholder">[Description de l'hypothèse]</span>
+            <span class="placeholder">
+                Les places (sièges/cabines) sont assignées par le système, c'est-à-dire que
+                le système assigne une place automatiquement en tenant compte des places
+                disponibles dans la section choisie par le passager ainsi que sa préférence (aile/fenêtre), s'il y a lieu.
+            </span>
         </div>
 
     </section>
@@ -398,7 +402,7 @@
 
         <figure>
 
-            <img src="./domaine/diagrammes/Reserver place.svg"
+            <img id="#fig2-2" src="./domaine/diagrammes/Reserver place.svg"
                  alt="[Réservation des voyages]">
 
             <figcaption>
@@ -428,7 +432,12 @@
             que c'est valide et il pourra directement sélectionner une section. Cela amène à <a href="#hypo2">l'hypothèse 2</a>.
             Celle-ci existe pour éviter que l'utilisateur puisse sélectionner une section sans place disponible et de
             devoir envoyer un message d'erreur et/ou de lui assigner une place dans une section que l'utilisateur ne désire
-            pas. On s'assure ainsi que l'utilisateur sait d'emblée quelle section il aura.
+            pas. On s'assure ainsi que l'utilisateur sache d'emblée quelle section il aura. De plus, dans la 
+            figure 2.2, on a l'étape de sélectionner une section méme si la recherche a été 
+            faite en spécifiant une section. Ce choix a été fait, car on a déterminé que lorsque l'utilisateur sélectionnera un voyage, 
+            le système affichera tous les détails du voyage, incluant l'information sur les autres sections. Ainsi, l'utilisateur pourra
+            voir l'entièreté de ses options pour ce voyage sans devoir refaire une recherche, ce qui est pratique s'il change d'avis
+            quant à la section!
         </p>
 
     </section>
