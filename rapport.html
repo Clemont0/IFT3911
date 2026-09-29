@@ -151,7 +151,7 @@
                     <td class="placeholder">
                         <a href="mailto:raphael.tremblay.3@umontreal.ca">raphael.tremblay.3@umontreal.ca</a>
                     </td>
-                    <td class="placeholder">[Temps]</td>
+                    <td class="placeholder">+/- 7heures</td>
                 </tr>
 
             </tbody>
@@ -495,6 +495,8 @@
 
         <ul>
             <li class="file">[fichier .vpp]</li>
+            <li class="file">DiagrammeDeSequencesReservation</li>
+            <li class="file">[fichier .vpp]</li>
         </ul>
 
         <h3>7.2 Résultats</h3>
@@ -504,17 +506,35 @@
                  alt="[Description du diagramme de séquence]">
 
             <figcaption>
-                Figure 4.1 — <span class="placeholder">[Description]</span>
+                Figure 4.1 — <span class="placeholder"> vérifier les vols/lignes/itinéraires</span>
             </figcaption>
+            <figcaption>
+            Justification :
+            </figcaption>
+            <p class="placeholder">
+    
+            </p>
+        </figure>
         </figure>
 
         <figure>
-            <img src="images/[diagramme-sequence-2.svg]"
-                 alt="[Description du diagramme de séquence]">
+            <img src="./design/diagrammes/DiagrammeDeSequencesReservation.svg"
+                 alt="Diagramme de séquences pour la reservation d'un siège">
 
             <figcaption>
-                Figure 4.2 — <span class="placeholder">[Description]</span>
+                Figure 4.2 — <span class="placeholder">Réserver un siège</span>
             </figcaption>
+            <figcaption>
+                Justification :
+            </figcaption>
+            <p class="placeholder">
+                Le diagramme de séquence illustre le processus de réservation d’un siège à partir
+                de l’opération reserver() du ControleurReservation. Le contrôleur vérifie d’abord
+                la disponibilité de la section avant de créer une réservation. Le fragment alt
+                permet de représenter les deux résultats possibles, soit une réservation réussie
+                lorsqu’une place est disponible, ou une réservation impossible dans le cas contraire.
+            </p>
+
         </figure>
 
         <figure>
@@ -522,15 +542,15 @@
                  alt="[Description du diagramme de séquence]">
 
             <figcaption>
-                Figure 4.3 — <span class="placeholder">[Description]</span>
+                Figure 4.3 — <span class="placeholder"> Payer un siège</span>
             </figcaption>
+            <figcaption>
+            Justification :
+            </figcaption>
+            <p class="placeholder">
+    
+            </p>
         </figure>
-
-        <h3>7.3 Justification des choix</h3>
-
-        <p class="placeholder">
-            [Expliquer les choix effectués et les raisons de ces choix.]
-        </p>
 
     </section>
 
@@ -600,35 +620,6 @@
         </p>
 
     </section>
-
-
-<!-- ========================================================= -->
-<!-- 10. CONCLUSION -->
-<!-- ========================================================= -->
-    <section>
-
-
-
-        <h2>10. Conclusion</h2>
-
-
-
-        <p class="placeholder">
-
-            test
-
-        </p>
-
-
-
-    </section>
-
-
-
-
-
-
-
 
 
 </body>
