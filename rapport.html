@@ -792,7 +792,7 @@
     priorité : PrioriteSiege
 ) : Reservation
 
-   pre: voyage.avion.sectionsAvion->includes(section) and
+   pre: voyage.vol.avion.sectionsAvion->includes(section) and
         section.siegesAeriens->exists(s | s.verifierDisponibilite())
 
    post: result.voyage = voyage and
@@ -806,7 +806,7 @@
     priorité : PrioriteSiege
 ) : Reservation
 
-   pre: voyage.train.sectionsTrain->includes(section) and
+   pre: voyage.trajet.train.sectionsTrain->includes(section) and
         section.siegesFerroviaires->exists(s | s.verifierDisponibilite())
 
    post: result.voyage = voyage and
@@ -839,7 +839,7 @@
 
 <pre><code>context ControleurReservation::reserver(voyage : Voyage, section : Section) : Reservation
 
-   pre: voyage.paquebot.sectionsPaquebot->includes(section) and
+   pre: voyage.itineraire.paquebot.sectionsPaquebot->includes(section) and
         section.cabines->exists(c | c.verifierDisponibilite())
 
    post: result.voyage = voyage and
