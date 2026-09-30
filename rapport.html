@@ -557,13 +557,12 @@
             </figcaption>
             <p class="placeholder">
                 D'abord on sépare les cas voyages aériens/ferroviaires et les voyages navals, car les voyages navals
-                ne requiert pas de destination. Dans le premier cas, la base de données va itérer parmi chaque voyage et, 
-                si la recherche avait été faite pour un voyage aérien, alors on va chercher les informations du vol et les autres
-                voyages seront ignorés. C'est le même principe si la recherche avait été faite pour un voyage ferroviaire. Ensuite,
+                ne requiert pas de destination. Dans le premier cas, la base de données va itérer parmi chaque voyage et, à chaque fois, on
+                vérifie si la recherche avait été faite pour un voyage aérien. Si c'est le cas et que le voyage à l'itération courante est un voyage aérien, alors on va chercher les informations du vol et les autres
+                voyages seront ignorés. De cette manière, on considère seulement les voyages concernés par la recherche. C'est le même principe si la recherche avait été faite pour un voyage ferroviaire. Ensuite,
                 on vérifie si ce voyage satisfait les critères de la recherche et, si c'est le cas, on l'ajoute dans la liste de voyages
-                à retourner. Dans le deuxième cas, la recherche est toujours faite pour un voyage naval, alors aucune vérification
-                est nécessaire et on considère seulement les voyages navals, donc, dans ce cas, on va chercher l'information de l'itinéraire.
-                Comme dans le premier cas, on vérifie si ce voyage satisfait les critères et, si oui, on l'ajoute à la liste. Finalement,
+                à retourner. Dans le deuxième cas, la recherche est toujours faite pour un voyage naval, alors, dans ce cas, on va chercher l'information du voyage courant seulement
+                si c'est un voyage naval, c'est-à-dire qu'on va chercher l'information de l'itinéraire. Comme dans le premier cas, on vérifie si ce voyage satisfait les critères et, si oui, on l'ajoute à la liste. Finalement,
                 une fois la liste complétée, on la retourne et on l'affiche au client. 
             </p>
         </figure>
