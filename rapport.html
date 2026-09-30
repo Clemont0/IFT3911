@@ -64,6 +64,7 @@
         .placeholder {
             color: #777;
             font-style: italic;
+            text-align: justify;
         }
 
         .file {
@@ -77,6 +78,45 @@
             padding: 10px 15px;
             border-left: 4px solid #555;
             background-color: #f5f5f5;
+        }
+
+        .constraint { 
+            background: white; 
+            padding: 25px; 
+            margin-bottom: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
+        }
+
+        .constraint h2 { 
+            font-size: 1.15rem; 
+            margin-top: 0; 
+            margin-bottom: 15px; 
+        }
+
+        .description { 
+            margin-bottom: 15px; 
+        }
+
+        .subsection { 
+            font-weight: bold; 
+            margin-top: 20px; 
+            margin-bottom: 8px; 
+        }
+
+        pre { 
+            background: #f1f1f1; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            padding: 15px; 
+            overflow-x: auto; 
+            font-family: "Courier New", monospace; 
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+        }
+
+        code { 
+            font-family: "Courier New", monospace; 
         }
     </style>
 </head>
@@ -133,7 +173,7 @@
                     <td class="placeholder">
                         <a href="mailto:angelique.defert@umontreal.ca">angelique.defert@umontreal.ca</a>
                     </td>
-                    <td class="placeholder">[Temps]</td>
+                    <td class="placeholder">± [Temps]</td>
                 </tr>
 
                 <tr>
@@ -142,7 +182,7 @@
                     <td class="placeholder">
                         <a href="mailto:hugo.bouchard.2@umontreal.ca">hugo.bouchard.2@umontreal.ca</a>
                     </td>
-                    <td class="placeholder">[Temps]</td>
+                    <td class="placeholder">± 10 heures</td>
                 </tr>
 
                 <tr>
@@ -151,7 +191,7 @@
                     <td class="placeholder">
                         <a href="mailto:raphael.tremblay.3@umontreal.ca">raphael.tremblay.3@umontreal.ca</a>
                     </td>
-                    <td class="placeholder">+/- 7heures</td>
+                    <td class="placeholder">± 7 heures</td>
                 </tr>
 
             </tbody>
@@ -402,7 +442,7 @@
 
         <figure>
 
-            <img id="#fig2-2" src="./domaine/diagrammes/Reserver place.svg"
+            <img id="fig2.2" src="./domaine/diagrammes/Reserver place.svg"
                  alt="[Réservation des voyages]">
 
             <figcaption>
@@ -433,7 +473,7 @@
             Celle-ci existe pour éviter que l'utilisateur puisse sélectionner une section sans place disponible et de
             devoir envoyer un message d'erreur et/ou de lui assigner une place dans une section que l'utilisateur ne désire
             pas. On s'assure ainsi que l'utilisateur sache d'emblée quelle section il aura. De plus, dans la 
-            figure 2.2, on a l'étape de sélectionner une section méme si la recherche a été 
+            <a href="#fig2.2">figure 2.2</a>, on a l'étape de sélectionner une section méme si la recherche a été 
             faite en spécifiant une section. Ce choix a été fait, car on a déterminé que lorsque l'utilisateur sélectionnera un voyage, 
             le système affichera tous les détails du voyage, incluant l'information sur les autres sections. Ainsi, l'utilisateur pourra
             voir l'entièreté de ses options pour ce voyage sans devoir refaire une recherche, ce qui est pratique s'il change d'avis
@@ -494,25 +534,37 @@
         <h3>7.1 Fichiers concernés</h3>
 
         <ul>
-            <li class="file">[fichier .vpp]</li>
-            <li class="file">DiagrammeDeSequencesReservation</li>
+            <li class="file">
+                <a href="./design/diagrammes/DiagrammeDeSequenceVerification.vpp">DiagrammeDeSequenceVerification.vpp</a>
+            </li>
+            <li class="file">
+                <a href="./design/diagrammes/DiagrammeDeSequencesReservation.vpp">DiagrammeDeSequencesReservation.vpp</a>
+            </li>
             <li class="file">[fichier .vpp]</li>
         </ul>
 
         <h3>7.2 Résultats</h3>
 
         <figure>
-            <img src="images/[diagramme-sequence-1.svg]"
-                 alt="[Description du diagramme de séquence]">
+            <img src="./design/diagrammes/DiagrammeDeSequenceVerification.svg"
+                 alt="Diagramme de séquences pour la vérification des vols/trajets/itinéraires">
 
             <figcaption>
-                Figure 4.1 — <span class="placeholder"> vérifier les vols/lignes/itinéraires</span>
+                Figure 4.1 — <span class="placeholder"> Vérifier les vols/trajets/itinéraires</span>
             </figcaption>
             <figcaption>
             Justification :
             </figcaption>
             <p class="placeholder">
-    
+                D'abord on sépare les cas voyages aériens/ferroviaires et les voyages navals, car les voyages navals
+                ne requiert pas de destination. Dans le premier cas, la base de données va itérer parmi chaque voyage et, 
+                si la recherche avait été faite pour un voyage aérien, alors on va chercher les informations du vol et les autres
+                voyages seront ignorés. C'est le même principe si la recherche avait été faite pour un voyage ferroviaire. Ensuite,
+                on vérifie si ce voyage satisfait les critères de la recherche et, si c'est le cas, on l'ajoute dans la liste de voyages
+                à retourner. Dans le deuxième cas, la recherche est toujours faite pour un voyage naval, alors aucune vérification
+                est nécessaire et on considère seulement les voyages navals, donc, dans ce cas, on va chercher l'information de l'itinéraire.
+                Comme dans le premier cas, on vérifie si ce voyage satisfait les critères et, si oui, on l'ajoute à la liste. Finalement,
+                une fois la liste complétée, on la retourne et on l'affiche au client. 
             </p>
         </figure>
         </figure>
@@ -566,7 +618,9 @@
         <h3>8.1 Fichiers concernés</h3>
 
         <ul>
-            <li class="file">DiagrammeDePaquets.vpp</li>
+            <li class="file">
+                <a href="./design/diagrammes/DiagrammeDePaquets.vpp">DiagrammeDePaquets.vpp</a>
+            </li>
         </ul>
 
         <h3>8.2 Résultats</h3>
@@ -601,23 +655,198 @@
 
         <h2>9. Tâche 6 — <span class="placeholder">Contraintes OCL</span></h2>
 
-        <h3>9.1 Contraintes</h3>
 
-        <p class="placeholder">
-            [Ajouter ici les contraintes OCL.]
-        </p>
+    
 
-        <h3>9.2 Réservation et paiement</h3>
+<div class="constraint">
+    <h2>1. Un aéroport est identifié par trois lettres uniques à chaque aéroport.</h2>
 
-        <p class="placeholder">
-            [Ajouter ici les préconditions et postconditions des opérations réserver() et payer().]
-        </p>
+<pre><code>context Aeroport
+   inv: self.idAeroport.size() = 3 and
+        Aeroport.allInstances()->isUnique(idAeroport)</code></pre>
 
-        <h3>9.3 Justification des choix</h3>
+</div>
 
-        <p class="placeholder">
-            [Expliquer les choix effectués et les raisons de ces choix.]
-        </p>
+<div class="constraint">
+    <h2>2. Une compagnie aérienne est identifiée par un code de deux lettres
+    unique à chaque compagnie.</h2>
+
+
+<pre><code>context CompagnieAérienne
+   inv: self.code.size() = 2 and
+        CompagnieAérienne.allInstances()->isUnique(code)</code></pre>
+</div>
+
+<div class="constraint">
+    <h2>3. Chaque vol est assigné à un avion appartenant à la compagnie
+    aérienne qui l'exploite.</h2>
+
+<pre><code>context Vol
+   inv: self.avion.CompagnieAérienne = self.CompagnieAérienne</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>4. Un même avion peut être assigné à plusieurs vols, mais deux vols
+    assignés au même avion ne peuvent pas se chevaucher.</h2>
+
+<pre><code>context Vol
+   inv: Vol.allInstances()
+            ->select(v | v.avion = self.avion and v <> self)
+            ->forAll(v | not (v.heureDepart < self.heureArrivee
+                         and  v.heureArrivee > self.heureDepart))</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>5. Un vol est identifié par un ID formé du code à deux lettres de la
+    compagnie aérienne suivi d'exactement quatre chiffres.
+    L'ID complet est unique à chaque vol.</h2>
+
+
+<pre><code>context Vol
+   inv: self.idVol = self.CompagnieAérienne.code.concat(self.idVol.substring(3, 6))
+        and self.idVol.size() = 6 and Vol.allInstances()->isUnique(idVol)</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>6. Une même section ne peut apparaître qu'une seule fois, et tout avion
+    doit contenir une section Économique (E).</h2>
+
+
+<pre><code>context Avion
+   inv: self.sectionsAvion->isUnique(type) and
+        self.sectionsAvion->exists(s | s.type = 'E')</code></pre>
+ 
+</div>
+
+<div class="constraint">
+    <h2>7. Un itinéraire ne peut pas durer plus de 14 jours.</h2>
+
+<pre><code>context Itineraire
+   inv: self.dateHeureArrivee - self.dateHeureDepart <= 14</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>8. Chaque itinéraire visite une suite de ports fixes comprenant
+    au moins trois ports distincts.</h2>
+
+<pre><code>context Itineraire
+   inv: self.escales->size() >= 3 and
+        self.escales->collect(e | e.port)->asSet()->size() >= 3</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>9. Le port de départ et d'arrivée doit être le même.</h2>
+
+<pre><code>context Itineraire
+   inv: self.escales->first().port = self.escales->last().port</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>10. Un paquebot peut être assigné à plusieurs itinéraires tant qu'ils
+    ne se chevauchent pas.</h2>
+
+<pre><code>context Itineraire
+   inv: Itineraire.allInstances()
+                   ->select(i | i.paquebot = self.paquebot and i <> self)
+                   ->forAll(i | not (i.heureDepart < self.heureArrivee
+                                and i.heureArrivee > self.heureDepart))</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>11. Chaque trajet visite une suite de gares fixes comprenant au moins
+    deux gares. Une même gare ne peut apparaître qu'une seule fois
+    dans un trajet.</h2>
+
+
+<pre><code>context Trajet
+   inv: self.arrêts->size() >= 2 and
+        self.arrêts->collect(e | e.gare)->asSet()->size() = self.arrêts->size()</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>12. Un passager peut avoir plusieurs réservations confirmées pour des
+    voyages différents, mais ne peut avoir plus d'une réservation
+    confirmée pour un même voyage.</h2>
+
+
+<pre><code>context Passager
+   inv: self.reservations->select(r | r.statut = StatutReservation::Confirmee)->isUnique(voyage)</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>13. Le client peut réserver un siège disponible dans un vol (trajet) donné.</h2>
+
+<div class="subsection">Aérien</div>
+
+<pre><code>context ControleurReservation::reserver(
+    voyage : Voyage,
+    section : Section,
+    priorité : PrioriteSiege
+) : Reservation
+
+   pre: voyage.avion.sectionsAvion->includes(section) and
+        section.siegesAeriens->exists(s | s.verifierDisponibilite())
+
+   post: result.voyage = voyage and
+         section.siegesAeriens->exists(s | not s.verifierDisponibilite() and result.uniteReservable = s)</code></pre>
+
+<div class="subsection">Ferroviaire</div>
+
+<pre><code>context ControleurReservation::reserver(
+    voyage : Voyage,
+    section : Section,
+    priorité : PrioriteSiege
+) : Reservation
+
+   pre: voyage.train.sectionsTrain->includes(section) and
+        section.siegesFerroviaires->exists(s | s.verifierDisponibilite())
+
+   post: result.voyage = voyage and
+         section.siegesFerroviaires->exists(s | not s.verifierDisponibilite() and result.uniteReservable = s)</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>14. Une fois le paiement effectué, la réservation est associée au
+    passager et le siège réservé lui est assigné : le siège est donc
+    confirmé.</h2>
+
+<pre><code>context ControleurPaiement::payer(
+    idReservation : String,
+    passager : Passager,
+    paiement : Paiement
+) : boolean
+
+   pre: let reservations = Reservation.allInstances() in
+            reservations->exists(r | r.idReservation = idReservation) and
+            reservations->any(r | r.idReservation = idReservation).statut <> StatutReservation::Confirmee
+
+   post: let r = Reservation.allInstances()->any(r | r.idReservation = idReservation) in
+             r.passager = passager and r.statut = StatutReservation::Confirmee</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>15. Le client peut réserver une cabine disponible pour un itinéraire donné.</h2>
+
+<pre><code>context ControleurReservation::reserver(voyage : Voyage, section : Section) : Reservation
+
+   pre: voyage.paquebot.sectionsPaquebot->includes(section) and
+        section.cabines->exists(c | c.verifierDisponibilite())
+
+   post: result.voyage = voyage and
+         section.cabines->exists(c | not c.verifierDisponibilite() and result.uniteReservable = c)</code></pre>
+
+</div>
 
     </section>
 
