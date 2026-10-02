@@ -692,8 +692,8 @@
 <pre><code>context Vol
    inv: Vol.allInstances()
             ->select(v | v.avion = self.avion and v <> self)
-            ->forAll(v | not (v.heureDepart < self.heureArrivee
-                         and  v.heureArrivee > self.heureDepart))</code></pre>
+            ->forAll(v | not (v.dateHeureDepart < self.dateHeureArrivee
+                         and  v.dateHeureArrivee > self.dateHeureDepart))</code></pre>
 
 </div>
 
@@ -753,8 +753,8 @@
 <pre><code>context Itineraire
    inv: Itineraire.allInstances()
                    ->select(i | i.paquebot = self.paquebot and i <> self)
-                   ->forAll(i | not (i.heureDepart < self.heureArrivee
-                                and i.heureArrivee > self.heureDepart))</code></pre>
+                   ->forAll(i | not (i.dateHeureDepart < self.dateHeureArrivee
+                                and i.dateHeureArrivee > self.dateHeureDepart))</code></pre>
 
 </div>
 
