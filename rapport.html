@@ -173,7 +173,7 @@
                     <td class="placeholder">
                         <a href="mailto:angelique.defert@umontreal.ca">angelique.defert@umontreal.ca</a>
                     </td>
-                    <td class="placeholder">± [Temps]</td>
+                    <td class="placeholder">± 9 heures</td>
                 </tr>
 
                 <tr>
@@ -505,7 +505,7 @@
 
         <figure>
 
-            <img src="./design/diagrammes/DiagrammeDeClasse.svg"
+            <img src="./design/diagrammes/DiagrammeDeClasses.svg"
                  alt="diagramme de classes">
 
             <figcaption>
@@ -518,7 +518,26 @@
         <h3>6.3 Justification des choix</h3>
 
         <p class="placeholder">
-            [Expliquer les choix effectués et les raisons de ces choix.]
+            Le diagramme de classes a été construit à partir du modèle du domaine en conservant les principales classes métier
+            et en leur ajoutant les attributs, types et opérations nécessaires pour la réalisation des cas d'utilisation. 
+            Les généralisations comme Voyage, Vehicule, Lieu, Section et UniteRservable permettent de regrouper les caractéristiques 
+            communes aux trois modes de transport et permet d'éviter de dupliquer les mêmes responsabilités dans plusieurs classes.
+        </p>
+        <p class="placeholder">
+            Les classes ControleurVoyage, ControleurReservation, ControleurPaiement ont été ajoutées pour coordonner respectivement
+            la recherche des voyages, la réservation et le paiement. La séparations des responsabilités permet de maintenir une forte 
+            cohésion dans chaque contrôleur et donc de limiter le couplage entre les différents cas d'utilisation. Certaines responsabilités 
+            sont directement placés dans les classes qui possèdent les informations nécessaires. Par exemple, Rservation peut vérifier 
+            si elle est expirée et gérer sa confirmation. Tandis que Paiement s'occupe d'effectuer le paiement et de générer la confirmation. 
+            Cela suit le principe Expert, puisque chaque responsabilité est attribué à la classe qui possède les informations 
+            nécessaires pour l'effectuer. 
+        </p>
+        <p class="placehorder">
+            La classe GestionnaireReservation a été créer pour centraliser les opérations qui nécessite l'accès à l'ensemble 
+            des réservations comme leur ajout, leur recherche et la vérification de l'existence d'une réservation déjà confirmée 
+            pour un passager et un voyage. On ne pouvait pas attribuer cette responsabilité à une réservation individuelle, puisqu'une 
+            instance de Reservation ne connaît pas l'ensemble des autres réservations. Ce choix respecte le principe Expert et 
+            évite aussi de donner cette responsabilté aux différents contrôleurs, ce qui réduit leur couplage et préserve leur rôles de coordination.
         </p>
 
     </section>
@@ -540,7 +559,9 @@
             <li class="file">
                 <a href="./design/diagrammes/DiagrammeDeSequencesReservation.vpp">DiagrammeDeSequencesReservation.vpp</a>
             </li>
-            <li class="file">[fichier .vpp]</li>
+            <li class="file">
+                <a href="./design/diagrammes/DiagrammeDeSequencePaiement.vpp">DiagrammeDeSequencePaiement.vpp</a>
+            </li>
         </ul>
 
         <h3>7.2 Résultats</h3>
@@ -589,8 +610,8 @@
         </figure>
 
         <figure id="d.s.paiement">
-            <img src="images/[diagramme-sequence-3.svg]"
-                 alt="[Description du diagramme de séquence]">
+            <img src="./design/diagrammes/DiagrammeDeSequencePaiement.svg"
+                 alt="Diagramme de séquence pour le paiement d'une réservation">
 
             <figcaption>
                 Figure 4.3 — <span class="placeholder"> Payer un siège</span>
@@ -599,7 +620,13 @@
             Justification :
             </figcaption>
             <p class="placeholder">
-    
+                Le diagramme de séquence représente le paiement d'une réservation à partir de son numéro. 
+                Le ControleurPaiement commence par rechercher la réservation auprès du GestionnaireReservation
+                pour vérifier qu'elle existe et qu'elle n'est pas expirée. Les fragments alt permettent ensuite de représenter 
+                les différents cas possible : réservation invalide ou expirée, réservation déjà confirmée pour le même passager
+                et le même voyage, puis paiement accepté ou refusé. Quand le paiement est accepté, le passager est créé et associé 
+                à la réservation, celle-ci est confirmée et une confirmation de paiement est finalement 
+                générée et affichée au client.
             </p>
         </figure>
 
