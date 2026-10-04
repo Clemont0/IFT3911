@@ -621,12 +621,14 @@
             </figcaption>
             <p class="placeholder">
                 Le diagramme de séquence représente le paiement d'une réservation à partir de son numéro. 
-                Le ControleurPaiement commence par rechercher la réservation auprès du GestionnaireReservation
-                pour vérifier qu'elle existe et qu'elle n'est pas expirée. Les fragments alt permettent ensuite de représenter 
-                les différents cas possible : réservation invalide ou expirée, réservation déjà confirmée pour le même passager
-                et le même voyage, puis paiement accepté ou refusé. Quand le paiement est accepté, le passager est créé et associé 
-                à la réservation, celle-ci est confirmée et une confirmation de paiement est finalement 
-                générée et affichée au client.
+                L'interfacePaiement commence par rechercher la réservation auprès du GestionnaireReservation
+                pour vérifier qu'elle existe et qu'elle n'est pas expirée. Les informations du passager sont ensuite saisies et
+                le système vérifie qu'il ne possède pas déjà une réservation confirmée pour le même voyage.
+                Les fragments alt permettent ensuite de représenter les différents cas possible : 
+                réservation invalide ou expirée, réservation déjà confirmée pour le même passager et le même voyage, 
+                puis paiement accepté ou refusé. Qaund les vérififcations sont terminés, le ControleurPaiement effectue le paiement. 
+                Si le paiement est accepté, le passager est créé et associé à la réservation, 
+                celle-ci est confirmée et une confirmation de paiement est finalement  générée et affichée au client.
             </p>
         </figure>
 
