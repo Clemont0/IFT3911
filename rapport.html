@@ -710,7 +710,7 @@
     aérienne qui l'exploite.</h2>
 
 <pre><code>context Vol
-   inv: self.avion.CompagnieAérienne = self.CompagnieAérienne</code></pre>
+   inv: self.avion.compagnieAerienne = self.compagnieAerienne</code></pre>
 
 </div>
 
@@ -733,7 +733,7 @@
 
 
 <pre><code>context Vol
-   inv: self.idVol = self.CompagnieAérienne.code.concat(self.idVol.substring(3, 6))
+   inv: self.idVol = self.compagnieAerienne.code.concat(self.idVol.substring(3, 6))
         and self.idVol.size() = 6 and Vol.allInstances()->isUnique(idVol)</code></pre>
 
 </div>
@@ -810,36 +810,22 @@
 
 </div>
 
-<div class="constraint">
+<div class="constraint" id="ocl13">
     <h2>13. Le client peut réserver un siège disponible dans un vol (trajet) donné.</h2>
 
-<div class="subsection">Aérien</div>
-
 <pre><code>context ControleurReservation::reserver(
     voyage : Voyage,
     section : Section,
     priorité : PrioriteSiege
 ) : Reservation
 
-   pre: voyage.vol.avion.sectionsAvion->includes(section) and
-        section.siegesAeriens->exists(s | s.verifierDisponibilite())
+   pre: voyage.vehicule.sections->includes(section) and 
+        section.unitesReservables->exists(u | u.verifierDisponibilite())
 
    post: result.voyage = voyage and
-         section.siegesAeriens->exists(s | not s.verifierDisponibilite() and result.uniteReservable = s)</code></pre>
+         section.unitesReservables->exists(u | not u.verifierDisponibilite() and result.uniteReservable = u)
 
-<div class="subsection">Ferroviaire</div>
-
-<pre><code>context ControleurReservation::reserver(
-    voyage : Voyage,
-    section : Section,
-    priorité : PrioriteSiege
-) : Reservation
-
-   pre: voyage.trajet.train.sectionsTrain->includes(section) and
-        section.siegesFerroviaires->exists(s | s.verifierDisponibilite())
-
-   post: result.voyage = voyage and
-         section.siegesFerroviaires->exists(s | not s.verifierDisponibilite() and result.uniteReservable = s)</code></pre>
+</code></pre>
 
 </div>
 
@@ -866,13 +852,18 @@
 <div class="constraint">
     <h2>15. Le client peut réserver une cabine disponible pour un itinéraire donné.</h2>
 
+    <p class="placeholder">Identique à la <a href="#ocl13">contrainte 13</a>, mais avec une différence dans la
+        signature de méthode, car le cas de voyage naval n'a pas de choix de priorité pour les unités réservables.
+    </p>
+
 <pre><code>context ControleurReservation::reserver(voyage : Voyage, section : Section) : Reservation
 
-   pre: voyage.itineraire.paquebot.sectionsPaquebot->includes(section) and
-        section.cabines->exists(c | c.verifierDisponibilite())
+   pre: voyage.vehicule.sections->includes(section) and 
+        section.unitesReservables->exists(u | u.verifierDisponibilite())
 
    post: result.voyage = voyage and
-         section.cabines->exists(c | not c.verifierDisponibilite() and result.uniteReservable = c)</code></pre>
+         section.unitesReservables->exists(u | not u.verifierDisponibilite() and result.uniteReservable = u)
+</code></pre>
 
 </div>
 
