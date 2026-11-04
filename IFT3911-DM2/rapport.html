@@ -694,8 +694,15 @@
 
         <figure>
 
+            <h4>Fichiers concernés</h4>
+
+            <ul>
+                <li class="file">PackageDiagramRevise.vpp</li>
+                <li class="file">PackageDiagramRevise.svg</li>
+            </ul>
+
             <img
-                src="images/diagramme-paquets-revise.svg"
+                src="./design/diagrammes/PackageDiagramRevise.svg"
                 alt="Diagramme de paquets révisé"
             >
 
@@ -706,7 +713,10 @@
         </figure>
 
         <p class="placeholder">
-            [Décrire la nouvelle organisation des paquets et leurs dépendances.]
+            Le diagramme de paquets a été révisé afin de préciser le contenu de chaque paquet et de mieux représenter leurs responsabilités.
+             Les classes principales sont maintenant associées explicitement aux paquets `Application`, `Commun`, `Aerien`, `Naval`, `Ferroviaire` et `Reservation`. 
+             Cette modification améliore la lisibilité du design, facilite l’analyse du couplage et de la cohésion, et montre plus clairement que les paquets spécialisés réutilisent 
+             les abstractions communes regroupées dans `Commun`.
         </p>
 
 
