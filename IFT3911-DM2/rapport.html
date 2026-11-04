@@ -472,17 +472,6 @@
 
         <h2>6. Révision du design logiciel du devoir 1</h2>
 
-        <p>
-            Le design du système de réservation développé dans le cadre du
-            devoir 1 a été révisé afin d'améliorer sa modularité, sa
-            réutilisabilité et sa qualité orientée objet.
-            Chaque membre de l'équipe a révisé la partie du design dont il
-            était principalement responsable lors du devoir 1.
-            Les modifications ont ensuite été regroupées afin de conserver
-            la cohérence entre le diagramme de classes, les diagrammes de
-            séquence, le diagramme de paquets et les contraintes OCL.
-        </p>
-
 
         <!-- ----------------------------------------------------- -->
         <!-- 6.1 DIAGRAMME DE CLASSES -->
@@ -514,14 +503,45 @@
         <h4>6.1.2 Modifications apportées</h4>
 
         <p class="placeholder">
-            [Décrire les modifications apportées au diagramme de classes.]
+            Le diagramme de classes conceptuel a été révisé afin de corriger les problèmes relevés dans le devoir 1.
+            Les classes générales `Lieu`, `Vehicule`, `Voyage`, `Compagnie`, `Section`, `UniteReservable` et `Utilisateur` ont été définies 
+            comme abstraites lorsque seules leurs spécialisations représentent des concepts concrets du domaine.
+            
+            Les attributs communs ont également été déplacés vers les classes générales appropriées afin d'éviter la duplication. 
+            Par exemple, `code` et `ville` sont définis dans `Lieu`, tandis que les différents types de lieux héritent de ces attributs. 
+            De même, l'attribut `prix` est maintenant défini dans `Section` et hérité par les différents types de sections. 
+            Les attributs génériques nommés `id` ont été remplacés par des termes plus représentatifs du domaine, comme `numeroVol`, 
+            `numeroItineraire` et `numeroReservation`.
+            
+            La classe `Ville`, devenue inutile, a été supprimée. La hiérarchie des compagnies a également été ajustée afin que
+            `LigneTrain` soit considérée comme une spécialisation de `Compagnie`. Une distinction entre `Administrateur` et `Passager` 
+            a été ajoutée à partir de la classe abstraite `Utilisateur`, afin de représenter les différents rôles présents dans le système.
+            
+            Finalement, certaines associations et cardinalités ont été précisées, notamment la relation entre `Avion` et `SectionAvion`, 
+            ainsi que les relations du volet ferroviaire. Les visibilités des attributs ont aussi été retirées du modèle conceptuel 
+            puisqu'elles relèvent davantage du design logiciel que de la modélisation du domaine.
         </p>
 
 
         <h4>6.1.3 Justification</h4>
 
         <p class="placeholder">
-            [Expliquer pourquoi ces modifications améliorent le design.]
+
+            Ces modifications améliorent le modèle en réduisant la duplication et en regroupant les caractéristiques 
+            communes dans des abstractions appropriées. L'utilisation de classes abstraites permet de représenter clairement les 
+            concepts généraux du domaine tout en laissant leurs spécialisations décrire les éléments concrets du système.
+            
+            Le déplacement des attributs communs vers les classes parentes améliore également la cohérence du modèle. 
+            Par exemple, les différents types de lieux partagent maintenant les mêmes caractéristiques de base sans devoir les redéfinir 
+            individuellement. La même logique s'applique aux sections et aux compagnies.
+            
+            Le remplacement des attributs génériques comme `id` par des noms correspondant au vocabulaire du domaine rend le diagramme 
+            plus expressif et moins dépendant de détails d'implémentation. La suppression de la classe `Ville` simplifie également 
+            le modèle en éliminant une classe qui n'apportait pas de responsabilité conceptuelle suffisante. 
+            
+            Enfin, l'ajout des rôles `Administrateur` et `Passager`, ainsi que la correction des associations et cardinalités, 
+            permet au diagramme de mieux représenter les besoins réels du système et les responsabilités des différents acteurs. 
+            Le modèle devient ainsi plus clair, plus cohérent et plus facilement réutilisable pour produire le design logiciel.
         </p>
 
 
@@ -530,31 +550,140 @@
         <!-- ----------------------------------------------------- -->
 
         <h3>6.2 Révision des diagrammes de séquence</h3>
-
-        <p>
-            Le diagramme de séquence de design portant sur la réservation
-            d'un siège est vérifié afin de conserver sa cohérence avec le
-            diagramme de classes logiciel révisé.
-        </p>
-
+        
+        <!-- ========================================================= -->
+        <!-- 6.2.1 PAIEMENT -->
+        <!-- ========================================================= -->
+        
+        <h4>6.2.1 Diagramme de séquence — Paiement</h4>
+        
         <figure>
 
+
+            <h4>Fichiers concernés</h4>
+
+        <ul>
+            <li class="file">PaiementRevise.vpp</li>
+            <li class="file">PaiementRevise.svg</li>
+        </ul>
+        
             <img
-                src="images/sequence-reservation-revise.svg"
+                src="Design/diagrammes/DiagrammeDeSequencePaiementRevise.svg"
+                alt="Diagramme de séquence de paiement révisé"
+            >
+        
+            <figcaption>
+                Figure 5 — Diagramme de séquence révisé pour le paiement.
+            </figcaption>
+        
+        </figure>
+        
+        <h5>Modifications apportées</h5>
+        
+        <p class="placeholder">
+            [Présenter les modifications apportées au diagramme de séquence
+            de paiement.]
+        </p>
+        
+        <h5>Justification</h5>
+        
+        <p class="placeholder">
+            [Justifier les modifications apportées au diagramme de séquence
+            de paiement.]
+        </p>
+        
+        
+        <!-- ========================================================= -->
+        <!-- 6.2.2 VÉRIFICATION -->
+        <!-- ========================================================= -->
+        
+        <h4>6.2.2 Diagramme de séquence — Vérification</h4>
+        
+        <figure>
+
+            <h4>Fichiers concernés</h4>
+
+            <ul>
+                <li class="file">VerificationRevise.vpp</li>
+                <li class="file">VerificationRevise.svg</li>
+            </ul>
+        
+            <img
+                src="./design/diagrammes/VerificationRevise.svg"
+                alt="Diagramme de séquence de vérification révisé"
+            >
+        
+            <figcaption>
+                Figure 6 — Diagramme de séquence révisé pour la vérification
+                des voyages.
+            </figcaption>
+        
+        </figure>
+        
+        <h5>Modifications apportées</h5>
+        
+        <p class="placeholder">
+            [Présenter les modifications apportées au diagramme de séquence
+            de vérification.]
+        </p>
+        
+        <h5>Justification</h5>
+        
+        <p class="placeholder">
+            [Justifier les modifications apportées au diagramme de séquence
+            de vérification.]
+        </p>
+        
+        
+        <!-- ========================================================= -->
+        <!-- 6.2.3 RÉSERVATION -->
+        <!-- ========================================================= -->
+        
+        <h4>6.2.3 Diagramme de séquence — Réservation</h4>
+        
+        <figure>
+
+            <h4>Fichiers concernés</h4>
+
+            <ul>
+                <li class="file">ReservationRevise.vpp</li>
+                <li class="file">ReservationRevise.svg</li>
+            </ul>
+        
+            <img
+                src="./design/diagrammes/ReservationRevise.svg"
                 alt="Diagramme de séquence de réservation révisé"
             >
-
+        
             <figcaption>
-                Figure 5 — Diagramme de séquence révisé pour la réservation
-                d'un siège.
+                Figure 7 — Diagramme de séquence révisé pour la réservation.
             </figcaption>
-
+        
         </figure>
-
+        
+        <h5>Modifications apportées</h5>
+        
         <p class="placeholder">
-            [Présenter les modifications apportées aux responsabilités
-            et aux collaborations entre les objets.]
+            Le diagramme de séquence de réservation a été révisé afin de corriger les incohérences relevées dans le devoir 1. 
+            L’opération verifierDisponibilité() est maintenant appelée sur UniteReservable, puisqu’il s’agit de la classe responsable 
+            de la disponibilité d’une unité pouvant être réservée, plutôt que sur Section.
+            
+            Les messages représentant des résultats retournés ont également été corrigés afin d’utiliser des messages de retour appropriés. 
+            Ainsi, disponible : Boolean, le retour de la réservation créée ainsi que le message indiquant qu’une réservation est impossible sont représentés 
+            comme des retours.
         </p>
+        
+        <h5>Justification</h5>
+        
+        <p class="placeholder">
+            Ces modifications améliorent la cohérence entre le diagramme de séquence et le diagramme de classes logiciel. 
+            La vérification de la disponibilité est maintenant attribuée à UniteReservable, qui possède l’information nécessaire, 
+            ce qui respecte le principe GRASP d’Expert en information.
+            
+            Les messages de retour ont aussi été corrigés afin de respecter la notation UML. 
+            Finalement, le fragment alt représente clairement les cas où la réservation est possible ou impossible.
+        </p>
+
 
 
         <!-- ----------------------------------------------------- -->
