@@ -81,6 +81,7 @@
         .placeholder {
             color: #777;
             font-style: italic;
+            text-align: justify;
         }
 
         .note {
@@ -88,6 +89,52 @@
             border-left: 4px solid #123b63;
             padding: 12px;
             margin: 15px 0;
+        }
+
+        .hypothese {
+            margin: 15px 0;
+            padding: 10px 15px;
+            border-left: 4px solid #555;
+            background-color: #f5f5f5;
+        }
+
+        .constraint { 
+            background: white; 
+            padding: 25px; 
+            margin-bottom: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
+        }
+
+        .constraint h2 { 
+            font-size: 1.15rem; 
+            margin-top: 0; 
+            margin-bottom: 15px; 
+        }
+
+        .description { 
+            margin-bottom: 15px; 
+        }
+
+        .subsection { 
+            font-weight: bold; 
+            margin-top: 20px; 
+            margin-bottom: 8px; 
+        }
+
+        pre { 
+            background: #f1f1f1; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            padding: 15px; 
+            overflow-x: auto; 
+            font-family: "Courier New", monospace; 
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+        }
+
+        code { 
+            font-family: "Courier New", monospace; 
         }
     </style>
 </head>
@@ -273,9 +320,9 @@
     
                 <tr>
                     <td>Révision des diagrammes de séquence</td>
-                    <td>33% — Paiement</td>
-                    <td>33% — Vérification</td>
-                    <td>33% — Réservation</td>
+                    <td>33% — <a href="#ds_paiement">Paiement</a></td>
+                    <td>33% — <a href="#ds_verification">Vérification</a></td>
+                    <td>33% — <a href="#ds_reservation">Réservation</a></td>
                 </tr>
     
                 <tr>
@@ -326,21 +373,27 @@
 
         <h2>3. Hypothèses</h2>
 
-        <ol>
-
-            <li class="placeholder">
+        <div class="hypothese" id="hypo1">
+            <strong>Hypothèse 1 :</strong>
+            <span class="placeholder">
                 [Hypothèse 1]
-            </li>
+            </span>
+        </div>
 
-            <li class="placeholder">
+        <div class="hypothese" id="hypo2">
+            <strong>Hypothèse 2 :</strong>
+            <span class="placeholder">
                 [Hypothèse 2]
-            </li>
+            </span>
+        </div>
 
-            <li class="placeholder">
+        <div class="hypothese" id="hypo3">
+            <strong>Hypothèse 3 :</strong>
+            <span class="placeholder">
                 [Hypothèse 3]
-            </li>
+            </span>
+        </div>
 
-        </ol>
 
     </section>
 
@@ -421,21 +474,21 @@
         <h3>5.1 Fichiers concernés</h3>
 
         <ul>
-            <li class="file">Microwave/model/microwave.sct</li>
-            <li class="file">images/microwave-statechart.png</li>
+            <li class="file">
+                <a href="Microwave/model/microwave.sct">Microwave/model/microwave.sct</a>
+            </li>
+            <li class="file">
+                <a href="Microwave/model/microwave.svg">Microwave/model/microwave.svg</a>
+            </li>
         </ul>
 
 
         <h3>5.2 Modélisation</h3>
 
-        <p class="placeholder">
-            [Décrire brièvement les états et transitions principales.]
-        </p>
-
         <figure>
 
             <img
-                src="images/microwave-statechart.png"
+                src="Microwave/model/microwave.svg"
                 alt="Statechart du four à micro-ondes"
             >
 
@@ -449,17 +502,28 @@
         <h3>5.3 Fonctionnement</h3>
 
         <p class="placeholder">
-            [Décrire la sélection de puissance, le timer, la cuisson,
-            l'ouverture de la porte, l'arrêt et la fin de cuisson.]
+            Tout d'abord, on a l'état <b>Idle</b> qui représente essentiellement l'état inactif du micro-ondes. Lorsque
+            le micro-ondes n'est pas en train d'être utilisé, il est en mode idle et en attente du début de processus.
+            Toutes les données sont réinitialisées dans cet état. Ensuite, on sélectionne la puissance de l'appareil, ce qui
+            amène à l'état <b>SelectPower</b>. À partir de là, il est possible de changer la puissance de l'appareil à nouveau
+            et d'aller à l'état <b>SetTime</b> à l'aide de l'action <b>timer</b>. Dans cet état, on utilise l'action <b>digit</b> pour entrer
+            un à un les chiffres représentant la durée de cuisson. Une fois 4 chiffres entrés, il ne sera plus possible d'en entrer
+            plus grâce au garde utilisé. Ensuite, à l'aide de l'action <b>start</b>, on se dirige vers l'état <b>Cooking</b>. Dans cet état, 
+            on trouve deux actions temporelles. Dans la première, après 1 seconde on décrémente le temps restant (remaining) tant qu'il reste plus
+            d'une seconde à la cuisson et ainsi le décompte du micro-ondes se réalise correctement. Dans la deuxième, si après 1 seconde
+            d'attente il ne reste que 1 seconde à la cuisson, alors la cuisson est terminée et on se dirige vers l'état <b>Finished</b>
+            en arrêtant la cuisson. Une fois dans cet état, le beep sonore se fait entendre et, après 5 secondes, le beep arrête et
+            le processus est terminé en retournant à <b>Idle</b>. De plus, il est possible, à partir de chaque état, de réaliser l'action
+            <b>stop</b> et mettre fin au processus en retournant à <b>Idle</b>. De manière analogue, chaque état permet de réaliser l'action <b>open</b> qui
+            ouvre la porte du micro-ondes et met le système en mode <b>Waiting</b>. Dans chaque cas, on store dans la variable returnState l'état
+            qui réalise l'action <b>open</b> de sorte à pouvoir y revenir par la suite lorsque l'action <b>close</b> est réalisée pour fermer la porte du micro-ondes.
+            De cette manière, le système reprend exactement où il avait laissé lorsque la porte a été ouverte. La seule exception est dans le cas de
+            <b>Cooking</b>. Dans ce cas, au lieu de revenir à l'état <b>Cooking</b>, on se dirige plutôt à l'état <b>Paused</b>. Ce choix a été fait, car
+            il est mentionné dans l'énoncé que l'action <b>start</b> doit être réalisée pour reprendre la cuisson. Il faut donc avoir un état qui permet
+            la transition entre l'action <b>close</b> qui referme la porte et ensuite l'action <b>start</b> qui continue la cuisson.
+        </p>
         </p>
 
-
-        <h3>5.4 Génération du code</h3>
-
-        <p class="placeholder">
-            [Indiquer que le code a été généré à partir du Statechart
-            et testé dans l'application fournie.]
-        </p>
 
     </section>
 
@@ -482,8 +546,12 @@
         <h4>6.1.1 Fichiers concernés</h4>
 
         <ul>
-            <li class="file">DiagrammeDeClassesConceptuelRevise.vpp</li>
-            <li class="file">DiagrammeDeClassesConceptuelRevise.svg</li>
+            <li class="file">
+                <a href="design/diagrammes/DiagrammeDeClassesConceptuelRevise.vpp">DiagrammeDeClassesConceptuelRevise.vpp</a>
+            </li>
+            <li class="file">
+                <a href="design/diagrammes/DiagrammeDeClassesConceptuelRevisé.svg">DiagrammeDeClassesConceptuelRevisé.svg</a>
+            </li>
         </ul>
 
         <figure>
@@ -555,17 +623,16 @@
         <!-- 6.2.1 PAIEMENT -->
         <!-- ========================================================= -->
         
-        <h4>6.2.1 Diagramme de séquence — Paiement</h4>
+        <h4 id="ds_paiement">6.2.1 Diagramme de séquence — Paiement</h4>
         
-        <figure>
-
-
-            <h4>Fichiers concernés</h4>
+        <h4>Fichiers concernés</h4>
 
         <ul>
             <li class="file">PaiementRevise.vpp</li>
             <li class="file">PaiementRevise.svg</li>
         </ul>
+
+        <figure>
         
             <img
                 src="Design/diagrammes/DiagrammeDeSequencePaiementRevise.svg"
@@ -597,19 +664,23 @@
         <!-- 6.2.2 VÉRIFICATION -->
         <!-- ========================================================= -->
         
-        <h4>6.2.2 Diagramme de séquence — Vérification</h4>
+        <h4 id="ds_verification">6.2.2 Diagramme de séquence — Vérification</h4>
         
-        <figure>
 
             <h4>Fichiers concernés</h4>
 
             <ul>
-                <li class="file">VerificationRevise.vpp</li>
-                <li class="file">VerificationRevise.svg</li>
+                <li class="file">
+                    <a href="design/diagrammes/DiagrammeDeSequenceVerification.vpp">DiagrammeDeSequenceVerification.vpp</a>
+                </li>
+                <li class="file">
+                    <a href="design/diagrammes/DiagrammeDeSequenceVerification.svg">DiagrammeDeSequenceVerification.svg</a>
+                </li>
             </ul>
         
+        <figure>
             <img
-                src="./design/diagrammes/VerificationRevise.svg"
+                src="design/diagrammes/DiagrammeDeSequenceVerification.svg"
                 alt="Diagramme de séquence de vérification révisé"
             >
         
@@ -623,15 +694,14 @@
         <h5>Modifications apportées</h5>
         
         <p class="placeholder">
-            [Présenter les modifications apportées au diagramme de séquence
-            de vérification.]
+            Éliminer les méthodes comme messages de retour.
         </p>
         
         <h5>Justification</h5>
         
         <p class="placeholder">
-            [Justifier les modifications apportées au diagramme de séquence
-            de vérification.]
+            Les messages de retour ne nécessitent pas de méthodes, car la classe appelée ne va pas à son tour appeler
+            la classe appelante, donc ce ne serait pas logique. La cohérence est désormais réinstorée.
         </p>
         
         
@@ -639,17 +709,21 @@
         <!-- 6.2.3 RÉSERVATION -->
         <!-- ========================================================= -->
         
-        <h4>6.2.3 Diagramme de séquence — Réservation</h4>
+        <h4 id="ds_reservation">6.2.3 Diagramme de séquence — Réservation</h4>
         
-        <figure>
+    
 
             <h4>Fichiers concernés</h4>
 
             <ul>
-                <li class="file">ReservationRevise.vpp</li>
-                <li class="file">ReservationRevise.svg</li>
+                <li class="file">
+                    <a href="design/diagrammes/ReservationRevise.vpp">ReservationRevise.vpp</a>
+                </li>
+                <li class="file">
+                    <a href="design/diagrammes/ReservationRevise.svg">ReservationRevise.svg</a>
+                </li>
             </ul>
-        
+        <figure>
             <img
                 src="./design/diagrammes/ReservationRevise.svg"
                 alt="Diagramme de séquence de réservation révisé"
@@ -692,15 +766,19 @@
 
         <h3>6.3 Révision du diagramme de paquets</h3>
 
-        <figure>
 
             <h4>Fichiers concernés</h4>
 
             <ul>
-                <li class="file">PackageDiagramRevise.vpp</li>
-                <li class="file">PackageDiagramRevise.svg</li>
+                <li class="file">
+                    <a href="design/diagrammes/ReservationRevise.vpp">ReservationRevise.vpp</a>
+                </li>
+                <li class="file">
+                    <a href="design/diagrammes/PackageDiagramRevise.svg">PackageDiagramRevise.svg</a>
+                </li>
             </ul>
 
+        <figure>
             <img
                 src="./design/diagrammes/PackageDiagramRevise.svg"
                 alt="Diagramme de paquets révisé"
@@ -726,9 +804,35 @@
 
         <h3>6.4 Révision des contraintes OCL</h3>
 
+        <div class="constraint">
+        <h2>[Contrainte numéro 5 dans le DM1] Un vol est identifié par un ID formé du code à deux lettres de la
+        compagnie aérienne suivi d'exactement quatre chiffres.
+        L'ID complet est unique à chaque vol.</h2>
+
+
+        <pre><code>context Vol
+        inv: let nums = self.idVol.substring(3, 6) in
+             self.idVol = self.compagnieAerienne.code.concat(nums) and self.idVol.size() = 6 and 
+             nums.matches('[0-9]{4}') and Vol.allInstances()->isUnique(idVol)
+        </code></pre>
+
+        </div>
+
+        <div class="constraint">
+        <h2>[Contrainte numéro 7 dans le DM1] Un itinéraire ne peut pas durer plus de 14 jours.</h2>
+
         <p class="placeholder">
-            [Présenter les contraintes OCL modifiées ou ajoutées.]
+            ChronoUnit est une classe de base dans Java. On utilise ici les minutes plutôt que les jours directement, car
+            ChronoUnit::DAYS tronque les jours partiels, alors 14 jours et 23 heures serait accepté alors qu'il ne devrait pas l'être. En
+            utilisant les minutes, certes on a des minutes partielles, mais ce n'est pas vraiment significatif par rapport à 14 jours si un voyage dure 14 jours et 59 secondes.
+            
         </p>
+
+        <pre><code>context Itineraire
+        inv: ChronoUnit::MINUTES.between(self.dateHeureDepart, self.dateHeureArrivee) <= 14 * 24 * 60
+        </code></pre>
+
+        </div>
 
 
         <!-- ----------------------------------------------------- -->
