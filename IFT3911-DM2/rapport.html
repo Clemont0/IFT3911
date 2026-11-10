@@ -538,10 +538,10 @@
 
 
         <!-- ----------------------------------------------------- -->
-        <!-- 6.1 DIAGRAMME DE CLASSES -->
+        <!-- 6.1 DIAGRAMME DE CLASSES CONCEPTUEL -->
         <!-- ----------------------------------------------------- -->
 
-        <h3>6.1 Révision du diagramme de classes</h3>
+        <h3>6.1 Révision du diagramme de classes conceptuel</h3>
 
         <h4>6.1.1 Fichiers concernés</h4>
 
@@ -562,7 +562,7 @@
             >
 
             <figcaption>
-                Figure 4 — Diagramme de classes logiciel révisé.
+                Figure 4 — Diagramme de classes conceptuel révisé.
             </figcaption>
 
         </figure>
@@ -611,35 +611,85 @@
             Le modèle devient ainsi plus clair, plus cohérent et plus facilement réutilisable pour produire le design logiciel.
         </p>
 
+        <!-- ----------------------------------------------------- -->
+        <!-- 6.2 DIAGRAMME DE CLASSES -->
+        <!-- ----------------------------------------------------- -->
+
+        <h3>6.2 Révision du diagramme de classes</h3>
+
+        <h4>6.2.1 Fichiers concernés</h4>
+
+        <ul>
+            <li class="file">
+                <a href="design/diagrammes/DiagrammeDeClassesRevise.vpp">DiagrammeDeClassesRevise.vpp</a>
+            </li>
+            <li class="file">
+                <a href="design/diagrammes/DiagrammeDeClasseRevise.svg">DiagrammeDeClasseRevise.svg</a>
+            </li>
+        </ul>
+
+        <figure>
+
+            <img
+                src="design/diagrammes/DiagrammeDeClasseRevise.svg"
+                alt="Diagramme de classes révisé"
+            >
+
+            <figcaption>
+                Figure 5 — Diagramme de classes révisé.
+            </figcaption>
+
+        </figure>
+
+
+        <h4>6.2.2 Modifications apportées</h4>
+
+        <p class="placeholder">
+            [Présenter les modifications apportées au diagramme de séquence
+            de paiement.]
+        </p>
+
+
+        <h4>6.2.3 Justification</h4>
+
+        <p class="placeholder">
+            [Justifier les modifications apportées au diagramme de séquence
+            de paiement.]
+        </p>
+
 
         <!-- ----------------------------------------------------- -->
-        <!-- 6.2 DIAGRAMMES DE SÉQUENCE -->
+        <!-- 6.3 DIAGRAMMES DE SÉQUENCE -->
         <!-- ----------------------------------------------------- -->
 
-        <h3>6.2 Révision des diagrammes de séquence</h3>
+        <h3>6.3 Révision des diagrammes de séquence</h3>
         
         <!-- ========================================================= -->
-        <!-- 6.2.1 PAIEMENT -->
+        <!-- 6.3.1 PAIEMENT -->
         <!-- ========================================================= -->
         
-        <h4 id="ds_paiement">6.2.1 Diagramme de séquence — Paiement</h4>
+        <h4 id="ds_paiement">6.3.1 Diagramme de séquence — Paiement</h4>
         
         <h4>Fichiers concernés</h4>
 
         <ul>
-            <li class="file">PaiementRevise.vpp</li>
-            <li class="file">PaiementRevise.svg</li>
+            <li class="file">
+                <a href="design/diagrammes/DiagrammeDeSequencePaiementRevise.vpp">DiagrammeDeSequencePaiementRevise.vpp</a>
+            </li>
+            <li class="file">
+                <a href="design/diagrammes/DiagrammeDeSequencePaiementRevise.svg">DiagrammeDeSequencePaiementRevise.svg</a>
+            </li>
         </ul>
 
         <figure>
         
             <img
-                src="Design/diagrammes/DiagrammeDeSequencePaiementRevise.svg"
+                src="design/diagrammes/DiagrammeDeSequencePaiementRevise.svg"
                 alt="Diagramme de séquence de paiement révisé"
             >
         
             <figcaption>
-                Figure 5 — Diagramme de séquence révisé pour le paiement.
+                Figure 6 — Diagramme de séquence révisé pour le paiement.
             </figcaption>
         
         </figure>
@@ -660,10 +710,10 @@
         
         
         <!-- ========================================================= -->
-        <!-- 6.2.2 VÉRIFICATION -->
+        <!-- 6.3.2 VÉRIFICATION -->
         <!-- ========================================================= -->
         
-        <h4 id="ds_verification">6.2.2 Diagramme de séquence — Vérification</h4>
+        <h4 id="ds_verification">6.3.2 Diagramme de séquence — Vérification</h4>
         
 
             <h4>Fichiers concernés</h4>
@@ -684,7 +734,7 @@
             >
         
             <figcaption>
-                Figure 6 — Diagramme de séquence révisé pour la vérification
+                Figure 7 — Diagramme de séquence révisé pour la vérification
                 des voyages.
             </figcaption>
         
@@ -693,22 +743,27 @@
         <h5>Modifications apportées</h5>
         
         <p class="placeholder">
-            Éliminer les méthodes comme messages de retour.
+            Éliminer les méthodes comme messages de retour. Spécifier le processus explicitement pour chacun des trois cas présents
+            de manière à être cohérent avec le diagramme de classes révisé et éliminer la nécessité d'une méthode <code>getInformation()</code>.
         </p>
         
         <h5>Justification</h5>
         
         <p class="placeholder">
             Les messages de retour ne nécessitent pas de méthodes, car la classe appelée ne va pas à son tour appeler
-            la classe appelante, donc ce ne serait pas logique. La cohérence est désormais réinstorée.
+            la classe appelante, donc ce ne serait pas logique. La cohérence est désormais réinstorée. Deuxièment, j'ai remarqué qu'il n'était pas nécessaire d'avoir
+            une méthode <code>getInformation()</code>, car il suffit d'itérer dans la liste, par exemple, de vols et vérifier qu'ils comportent
+            les propriétés recherchées par l'utilisateur et l'ajouter dans la liste à retourner si c'est le cas. Les objets sont déjà présents dans la base de données,
+            alors il n'est pas nécessaire d'aller chercher l'information complète d'un objet et faire la vérification par la suite; on peut directement accéder aux propriétés des objets et
+            faire la vérification de cette manière.
         </p>
         
         
         <!-- ========================================================= -->
-        <!-- 6.2.3 RÉSERVATION -->
+        <!-- 6.3.3 RÉSERVATION -->
         <!-- ========================================================= -->
         
-        <h4 id="ds_reservation">6.2.3 Diagramme de séquence — Réservation</h4>
+        <h4 id="ds_reservation">6.3.3 Diagramme de séquence — Réservation</h4>
         
     
 
@@ -729,7 +784,7 @@
             >
         
             <figcaption>
-                Figure 7 — Diagramme de séquence révisé pour la réservation.
+                Figure 8 — Diagramme de séquence révisé pour la réservation.
             </figcaption>
         
         </figure>
@@ -759,10 +814,10 @@
 
 
         <!-- ----------------------------------------------------- -->
-        <!-- 6.3 DIAGRAMME DE PAQUETS -->
+        <!-- 6.4 DIAGRAMME DE PAQUETS -->
         <!-- ----------------------------------------------------- -->
 
-        <h3>6.3 Révision du diagramme de paquets</h3>
+        <h3>6.4 Révision du diagramme de paquets</h3>
 
 
             <h4>Fichiers concernés</h4>
@@ -783,7 +838,7 @@
             >
 
             <figcaption>
-                Figure 6 — Diagramme de paquets révisé.
+                Figure 9 — Diagramme de paquets révisé.
             </figcaption>
 
         </figure>
@@ -797,27 +852,77 @@
 
 
         <!-- ----------------------------------------------------- -->
-        <!-- 6.4 OCL -->
+        <!-- 6.5 OCL -->
         <!-- ----------------------------------------------------- -->
 
-        <h3>6.4 Révision des contraintes OCL</h3>
+        <h3>6.5 Révision des contraintes OCL</h3>
 
         <div class="constraint">
-        <h2>[Contrainte numéro 5 dans le DM1] Un vol est identifié par un ID formé du code à deux lettres de la
+    <h2>1. Un aéroport est identifié par trois lettres uniques à chaque aéroport.</h2>
+
+<pre><code>context Aeroport
+   inv: self.id.size() = 3 and Aeroport.allInstances()->isUnique(id)</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>2. Une compagnie aérienne est identifiée par un code de deux lettres
+    unique à chaque compagnie.</h2>
+
+
+<pre><code>context CompagnieAérienne
+   inv: self.id.size() = 2 and self.id.matches('[A-Za-z]{2}') and
+        CompagnieAérienne.allInstances()->isUnique(id)</code></pre>
+</div>
+
+<div class="constraint">
+    <h2>3. Chaque vol est assigné à un avion appartenant à la compagnie
+    aérienne qui l'exploite.</h2>
+
+<pre><code>context Vol
+   inv: self.avion.compagnieAerienne = self.compagnieAerienne</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>4. Un même avion peut être assigné à plusieurs vols, mais deux vols
+    assignés au même avion ne peuvent pas se chevaucher.</h2>
+
+<pre><code>context Vol
+   inv: Vol.allInstances()
+            ->select(v | v.avion = self.avion and v <> self)
+            ->forAll(v | not (v.dateHeureDepart < self.dateHeureArrivee
+                         and  v.dateHeureArrivee > self.dateHeureDepart))</code></pre>
+
+</div>
+
+<div class="constraint">
+        <h2>5. Un vol est identifié par un ID formé du code à deux lettres de la
         compagnie aérienne suivi d'exactement quatre chiffres.
         L'ID complet est unique à chaque vol.</h2>
 
 
         <pre><code>context Vol
         inv: let nums = self.idVol.substring(3, 6) in
-             self.idVol = self.compagnieAerienne.code.concat(nums) and self.idVol.size() = 6 and 
+             self.idVol = self.compagnieAerienne.id.concat(nums) and self.idVol.size() = 6 and 
              nums.matches('[0-9]{4}') and Vol.allInstances()->isUnique(idVol)
         </code></pre>
 
         </div>
 
-        <div class="constraint">
-        <h2>[Contrainte numéro 7 dans le DM1] Un itinéraire ne peut pas durer plus de 14 jours.</h2>
+<div class="constraint">
+    <h2>6. Une même section ne peut apparaître qu'une seule fois, et tout avion
+    doit contenir une section Économique (E).</h2>
+
+
+<pre><code>context Avion
+   inv: self.sectionsAvion->isUnique(type) and
+        self.sectionsAvion->exists(s | s.type = 'E')</code></pre>
+ 
+</div>
+
+<div class="constraint">
+        <h2>7. Un itinéraire ne peut pas durer plus de 14 jours.</h2>
 
         <p class="placeholder">
             ChronoUnit est une classe de base dans Java. On utilise ici les minutes plutôt que les jours directement, car
@@ -832,12 +937,132 @@
 
         </div>
 
+<div class="constraint">
+    <h2>8. Chaque itinéraire visite une suite de ports fixes comprenant
+    au moins trois ports distincts.</h2>
+
+<pre><code>context Itineraire
+   inv: self.escales->size() >= 3 and
+        self.escales->collect(e | e.port)->asSet()->size() >= 3</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>9. Le port de départ et d'arrivée doit être le même.</h2>
+
+<pre><code>context Itineraire
+   inv: self.escales->first().port = self.escales->last().port</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>10. Un paquebot peut être assigné à plusieurs itinéraires tant qu'ils
+    ne se chevauchent pas.</h2>
+
+<pre><code>context Itineraire
+   inv: Itineraire.allInstances()
+                   ->select(i | i.paquebot = self.paquebot and i <> self)
+                   ->forAll(i | not (i.dateHeureDepart < self.dateHeureArrivee
+                                and i.dateHeureArrivee > self.dateHeureDepart))</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>11. Chaque trajet visite une suite de gares fixes comprenant au moins
+    deux gares. Une même gare ne peut apparaître qu'une seule fois
+    dans un trajet.</h2>
+
+
+<pre><code>context Trajet
+   inv: self.arrêts->size() >= 2 and
+        self.arrêts->collect(a | a.gare)->asSet()->size() = self.arrêts->size()</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>12. Un passager peut avoir plusieurs réservations confirmées pour des
+    voyages différents, mais ne peut avoir plus d'une réservation
+    confirmée pour un même voyage.</h2>
+
+
+<pre><code>context Passager
+   inv: self.reservations->select(r | r.statut = StatutReservation::CONFIRMEE)->isUnique(voyage)</code></pre>
+
+</div>
+
+<div class="constraint" id="ocl13">
+    <h2>13. Le client peut réserver un siège disponible dans un vol (trajet) donné.</h2>
+
+<pre><code>context ControleurReservation::reserverSiege(
+    voyage : Voyage,
+    section : Section,
+    priorite : PrioriteSiege
+) : Reservation
+
+   pre: voyage.vehicule.sections->includes(section) and 
+        section.unitesReservables->exists(u | u.verifierDisponibilite())
+
+   post: result.voyage = voyage and
+         section.unitesReservables->exists(u | not u.verifierDisponibilite() and result.uniteReservable = u)
+
+</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>14. Une fois le paiement effectué, la réservation est associée au
+    passager et le siège réservé lui est assigné : le siège est donc
+    confirmé.</h2>
+
+<pre><code>context ControleurPaiement::payer(
+    idReservation : String,
+    nom : String,
+    prenom : String,
+    courriel : String,
+    numeroPasseport : String,
+    numeroCarte : String,
+    expiration : String,
+    CVV : String
+) : boolean
+
+   pre: let reservations = Reservation.allInstances() in
+            reservations->exists(r | r.idReservation = idReservation) and
+            reservations->any(r | r.idReservation = idReservation).statut <> StatutReservation::CONFIRMEE
+
+   post: let r = Reservation.allInstances()->any(r | r.idReservation = idReservation),
+             p = Passager.allInstances()->any(p | p.nom = nom and 
+                                                  p.prenom = prenom and 
+                                                  p.courriel = courriel and 
+                                                  p.numPasseport = numeroPasseport)
+         in
+             r.passager = p and r.statut = StatutReservation::CONFIRMEE</code></pre>
+
+</div>
+
+<div class="constraint">
+    <h2>15. Le client peut réserver une cabine disponible pour un itinéraire donné.</h2>
+
+    <p class="placeholder">Identique à la <a href="#ocl13">contrainte 13</a>, mais avec une différence dans la
+        signature de méthode, car le cas de voyage naval n'a pas de choix de priorité pour les unités réservables.
+    </p>
+
+<pre><code>context ControleurReservation::reserverCabine(voyage : Voyage, section : Section) : Reservation
+
+   pre: voyage.vehicule.sections->includes(section) and 
+        section.unitesReservables->exists(u | u.verifierDisponibilite())
+
+   post: result.voyage = voyage and
+         section.unitesReservables->exists(u | not u.verifierDisponibilite() and result.uniteReservable = u)
+</code></pre>
+
+</div>
+
 
         <!-- ----------------------------------------------------- -->
-        <!-- 6.5 MODULES RÉUTILISABLES -->
+        <!-- 6.6 MODULES RÉUTILISABLES -->
         <!-- ----------------------------------------------------- -->
 
-        <h3>6.5 Modules à usage général et réutilisables</h3>
+        <h3>6.6 Modules à usage général et réutilisables</h3>
 
         <p>
             Certains modules du système ont été conçus de manière suffisamment
