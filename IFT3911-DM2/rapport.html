@@ -216,7 +216,7 @@
                             raphael.tremblay.3@umontreal.ca
                         </a>
                     </td>
-                    <td> - heures</td>
+                    <td> +/- 10 heures</td>
                 </tr>
 
             </tbody>
@@ -236,11 +236,11 @@
         <h2>1. Introduction</h2>
 
         <p>
-            Ce rapport présente les différentes parties du devoir maison 2.
+            Ce rapport présente les différentes parties du devoir 2.
             Le travail comprend la modélisation et l'analyse d'un réseau de Pétri,
             la réalisation d'un Statechart pour un four à micro-ondes, ainsi que
             la révision et l'analyse de la qualité du design logiciel développé
-            dans le cadre du devoir maison 1.
+            dans le cadre du devoir 1.
         </p>
 
     </section>
@@ -376,25 +376,10 @@
         <div class="hypothese" id="hypo1">
             <strong>Hypothèse 1 :</strong>
             <span class="placeholder">
-                [Hypothèse 1]
+                Nous supposons qu’un `Train` appartient à une seule `LigneTrain` et 
+                qu’un `Trajet` est offert par une `LigneTrain` et réalisé par un `Train` appartenant à cette même ligne.
             </span>
         </div>
-
-        <div class="hypothese" id="hypo2">
-            <strong>Hypothèse 2 :</strong>
-            <span class="placeholder">
-                [Hypothèse 2]
-            </span>
-        </div>
-
-        <div class="hypothese" id="hypo3">
-            <strong>Hypothèse 3 :</strong>
-            <span class="placeholder">
-                [Hypothèse 3]
-            </span>
-        </div>
-
-
     </section>
 
 
@@ -571,22 +556,13 @@
         <h4>6.1.2 Modifications apportées</h4>
 
         <p class="placeholder">
-            Les classes générales `Lieu`, `Vehicule`, `Voyage`, `Compagnie`, `Section`, `UniteReservable` et `Utilisateur` ont été définies 
-            comme abstraites lorsque seules leurs spécialisations représentent des concepts concrets du domaine.
-            
-            Les attributs communs ont également été déplacés vers les classes générales appropriées afin d'éviter la duplication. 
-            Par exemple, `code` et `ville` sont définis dans `Lieu`, tandis que les différents types de lieux héritent de ces attributs. 
-            De même, l'attribut `prix` est maintenant défini dans `Section` et hérité par les différents types de sections. 
-            Les attributs génériques nommés `id` ont été remplacés par des termes plus représentatifs du domaine, comme `numeroVol`, 
-            `numeroItineraire` et `numeroReservation`.
-            
-            La classe `Ville`, devenue inutile, a été supprimée. La hiérarchie des compagnies a également été ajustée afin que
-            `LigneTrain` soit considérée comme une spécialisation de `Compagnie`. Une distinction entre `Administrateur` et `Passager` 
-            a été ajoutée à partir de la classe abstraite `Utilisateur`, afin de représenter les différents rôles présents dans le système.
-            
-            Finalement, certaines associations et cardinalités ont été précisées, notamment la relation entre `Avion` et `SectionAvion`, 
-            ainsi que les relations du volet ferroviaire. Les visibilités des attributs ont aussi été retirées du modèle conceptuel 
-            puisqu'elles relèvent davantage du design logiciel que de la modélisation du domaine.
+            Les classes générales Lieu, Vehicule, Voyage, Compagnie, Section, UniteReservable et 
+            Utilisateur ont été définies comme abstraites lorsque seules leurs spécialisations représentent des concepts concrets. 
+            Les attributs communs ont été déplacés vers les classes parentes afin d’éviter la duplication, et les attributs génériques
+            comme id ont été remplacés par des noms propres au domaine, tels que numeroVol, numeroItineraire et numeroReservation. 
+            La classe Ville a été supprimée, LigneTrain est maintenant une spécialisation de Compagnie, et les rôles `Administrateur` et 
+            Passager spécialisent Utilisateur. Certaines associations et cardinalités ont également été corrigées, notamment entre Avion et SectionAvion,
+             et les visibilités ont été retirées du modèle conceptuel.
         </p>
 
 
@@ -594,21 +570,9 @@
 
         <p class="placeholder">
 
-            Ces modifications améliorent le modèle en réduisant la duplication et en regroupant les caractéristiques 
-            communes dans des abstractions appropriées. L'utilisation de classes abstraites permet de représenter clairement les 
-            concepts généraux du domaine tout en laissant leurs spécialisations décrire les éléments concrets du système.
-            
-            Le déplacement des attributs communs vers les classes parentes améliore également la cohérence du modèle. 
-            Par exemple, les différents types de lieux partagent maintenant les mêmes caractéristiques de base sans devoir les redéfinir 
-            individuellement. La même logique s'applique aux sections et aux compagnies.
-            
-            Le remplacement des attributs génériques comme `id` par des noms correspondant au vocabulaire du domaine rend le diagramme 
-            plus expressif et moins dépendant de détails d'implémentation. La suppression de la classe `Ville` simplifie également 
-            le modèle en éliminant une classe qui n'apportait pas de responsabilité conceptuelle suffisante. 
-            
-            Enfin, l'ajout des rôles `Administrateur` et `Passager`, ainsi que la correction des associations et cardinalités, 
-            permet au diagramme de mieux représenter les besoins réels du système et les responsabilités des différents acteurs. 
-            Le modèle devient ainsi plus clair, plus cohérent et plus facilement réutilisable pour produire le design logiciel.
+            Ces modifications réduisent la duplication et rendent le modèle plus cohérent avec le domaine. Les abstractions 
+            regroupent les caractéristiques communes, tandis que les spécialisations représentent les concepts concrets du système. La suppression des éléments inutiles, 
+            l’utilisation de noms plus représentatifs et la correction des associations rendent le diagramme plus clair, plus précis et plus facilement réutilisable pour produire le design logiciel.
         </p>
 
         <!-- ----------------------------------------------------- -->
@@ -824,7 +788,7 @@
 
             <ul>
                 <li class="file">
-                    <a href="design/diagrammes/ReservationRevise.vpp">ReservationRevise.vpp</a>
+                    <a href="design/diagrammes/PackageDiagramRevise.vpp">ReservationRevise.vpp</a>
                 </li>
                 <li class="file">
                     <a href="design/diagrammes/PackageDiagramRevise.svg">PackageDiagramRevise.svg</a>
@@ -844,10 +808,10 @@
         </figure>
 
         <p class="placeholder">
-            Le diagramme de paquets a été révisé afin de préciser le contenu de chaque paquet et de mieux représenter leurs responsabilités.
-             Les classes principales sont maintenant associées explicitement aux paquets `Application`, `Commun`, `Aerien`, `Naval`, `Ferroviaire` et `Reservation`. 
-             Cette modification améliore la lisibilité du design, facilite l’analyse du couplage et de la cohésion, et montre plus clairement que les paquets spécialisés réutilisent 
-             les abstractions communes regroupées dans `Commun`.
+            Le diagramme de paquets a été révisé afin de mieux préciser les responsabilités de chaque partie du système et de refléter 
+            les dépendances présentes dans le diagramme de classes logiciel. Les classes sont maintenant regroupées explicitement dans les paquets Présentation, 
+            Application, Commun, Aerien, Naval, Ferroviaire et Reservation. Cette organisation sépare l’interface utilisateur, 
+            la logique de coordination et les concepts du domaine, tout en faisant apparaître clairement les dépendances entre les paquets. 
         </p>
 
 
@@ -1087,7 +1051,9 @@
                 </td>
 
                 <td class="placeholder">
-                    [Justification]
+                    Contient des concepts génériques comme Voyage, Vehicule, Lieu, Compagnie, 
+                    Section et UniteReservable, qui peuvent être réutilisés indépendamment 
+                    d’un mode de transport particulier.
                 </td>
 
             </tr>
@@ -1101,26 +1067,13 @@
                 </td>
 
                 <td class="placeholder">
-                    [Justification]
+                    Centralise les concepts liés à la réservation, au passager, 
+                    au paiement et au statut, tout en s’appuyant sur les abstractions 
+                    du paquet Commun plutôt que sur un mode de transport spécifique.
                 </td>
 
             </tr>
 
-            <tr>
-
-                <td class="placeholder">
-                    [Autre module]
-                </td>
-
-                <td class="placeholder">
-                    [Responsabilité]
-                </td>
-
-                <td class="placeholder">
-                    [Justification]
-                </td>
-
-            </tr>
 
         </table>
 
@@ -1151,18 +1104,12 @@
         <h3>7.1 Couplage</h3>
 
         <p class="placeholder">
-            [Analyser le couplage des classes et des paquets.
-            Identifier explicitement les types de couplage concernés.]
+            Le design cherche à maintenir un couplage faible en séparant les responsabilités entre les différents contrôleurs et les paquets du domaine. 
+            Les paquets Aerien, Naval, Ferroviaire et Reservation dépendent principalement des abstractions définies dans Commun, ce qui limite les dépendances directes entre les domaines spécialisés.
+            Le couplage observé est principalement un couplage de données lorsque des valeurs simples sont échangées, ainsi qu’un couplage par paquet lorsque des objets du domaine tels que Voyage, Section, Lieu ou Compagnie sont transmis comme paramètres.
+            Aucun couplage de contenu ou par données communes n’est nécessaire dans le design.
         </p>
 
-        <div class="note">
-
-            <strong>À discuter :</strong>
-
-            couplage par données, paquet, contrôle, commun ou contenu,
-            ainsi que le CBO lorsque pertinent.
-
-        </div>
 
 
         <!-- ----------------------------------------------------- -->
@@ -1172,18 +1119,11 @@
         <h3>7.2 Cohésion</h3>
 
         <p class="placeholder">
-            [Analyser la cohésion des principales classes et modules.
-            Identifier explicitement le type de cohésion.]
+            La cohésion est généralement élevée. ControleurReservation, ControleurPaiement et ControleurVoyage présentent principalement une cohésion fonctionnelle, 
+            puisque leurs opérations contribuent à une responsabilité précise. SystemeReservation présente plutôt une cohésion informationnelle, car ses opérations manipulent 
+            les collections de voyages, lieux, compagnies et lignes de train. ControleurAdministration possède une cohésion davantage logique, puisqu’il regroupe plusieurs opérations administratives appliquées à différents concepts du domaine.
         </p>
 
-        <div class="note">
-
-            <strong>À discuter :</strong>
-
-            cohésion fonctionnelle, informationnelle,
-            communicationnelle, procédurale, etc.
-
-        </div>
 
 
         <!-- ----------------------------------------------------- -->
@@ -1193,9 +1133,11 @@
         <h3>7.3 Fardeau et domaine des classes</h3>
 
         <p class="placeholder">
-            [Analyser le fardeau des principales classes en relation
-            avec leur domaine : fondation, architecture, métier ou
-            application.]
+            Les abstractions du paquet Commun, telles que Voyage, Vehicule, Lieu, Compagnie, Section et UniteReservable, possèdent un fardeau relativement faible et servent de base aux classes spécialisées. 
+            Elles appartiennent principalement au domaine métier et sont conçues pour rester générales et stables. À l’inverse, les classes de la couche application, notamment SystemeReservation et les différents contrôleurs, 
+            possèdent un fardeau plus élevé puisqu’elles collaborent avec plusieurs classes du domaine. Ce fardeau est cohérent avec leur rôle : elles doivent coordonner plusieurs objets afin de réaliser les cas d’utilisation du système. 
+            SystemeReservation est particulièrement central puisqu’il conserve et manipule les voyages, lieux, compagnies et lignes de train. Les classes spécialisées des domaines aérien, naval et ferroviaire ont un fardeau intermédiaire. 
+            Elles dépendent des abstractions communes par héritage et associations, mais demeurent principalement limitées aux concepts de leur propre mode de transport.
         </p>
 
 
@@ -1277,68 +1219,79 @@
 
             <tr>
                 <td>Commun</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
+                <td class="placeholder">5</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">5</td>
+                <td class="placeholder">7</td>
+                <td class="placeholder">0,71</td>
+                <td class="placeholder">0,29</td>
             </tr>
 
             <tr>
                 <td>Aérien</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">0,50</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">6</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0,50</td>
             </tr>
 
             <tr>
                 <td>Naval</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">0,50</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">7</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0,50</td>
             </tr>
 
             <tr>
                 <td>Ferroviaire</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">0,50</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">7</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0,50</td>
             </tr>
 
             <tr>
                 <td>Réservation</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">0,50</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">4</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0,50</td>
             </tr>
 
             <tr>
                 <td>Application</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
-                <td class="placeholder">-</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">5</td>
+                <td class="placeholder">0,83</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">5</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0,17</td>
+            </tr>
+
+            <tr>
+                <td>Présentation</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">1</td>
+                <td class="placeholder">0</td>
+                <td class="placeholder">0</td>
             </tr>
 
         </table>
@@ -1347,22 +1300,32 @@
         <figure>
 
             <img
-                src="images/graphe-ia.png"
+                src="./design/diagrammes/GrapheIA.png"
                 alt="Graphe Instabilité-Abstraction"
             >
 
             <figcaption>
-                Figure 7 — Graphe Instabilité-Abstraction des paquets.
+                Figure 10 — Graphe Instabilité-Abstraction des paquets.
             </figcaption>
 
         </figure>
 
-
         <h4>7.4.1 Interprétation du graphe</h4>
 
         <p class="placeholder">
-            [Justifier la position des différents paquets par rapport
-            à la Main Sequence.]
+            Le graphe Instabilité-Abstraction montre que le paquet `Commun` est le plus stable du système, 
+            avec une instabilité nulle (`I = 0`) et une abstraction relativement élevée (`A ≈ 0,71`). 
+            Ce positionnement est cohérent avec son rôle, puisqu’il contient les abstractions générales réutilisées par plusieurs autres paquets. 
+        </p>
+        <p class="placeholder">
+            Les paquets `Aerien`, `Naval`, `Ferroviaire` et `Reservation` se situent autour de `I = 0,50` et `A = 0`, ce qui traduit un équilibre 
+            entre dépendances entrantes et sortantes, mais un contenu principalement concret. Le paquet `Application` est plus instable (`I ≈ 0,83`) 
+            puisqu’il dépend de plusieurs paquets du domaine, tandis que `Presentation` est totalement instable (`I = 1`) puisqu’il dépend de l’application
+            sans être utilisé par d’autres paquets.
+         </p>
+         <p class="placeholder">
+            Dans l’ensemble, le graphe reflète une architecture où les éléments les plus généraux et réutilisables 
+            sont placés dans un paquet stable, alors que les couches situées plus près de l’interface utilisateur sont plus dépendantes et donc plus instables.
         </p>
 
 
@@ -1382,86 +1345,72 @@
             <tr>
                 <td>SRP</td>
                 <td class="placeholder">
-                    [Expliquer]
+                    Les responsabilités sont principalement séparées entre les contrôleurs de voyage, de réservation, de paiement et d’administration. 
+                    Chaque contrôleur regroupe les opérations liées à une responsabilité particulière, même si ControleurAdministration couvre plusieurs opérations administratives.
                 </td>
             </tr>
 
             <tr>
                 <td>OCP</td>
                 <td class="placeholder">
-                    [Expliquer]
-                </td>
+                    Les abstractions telles que Voyage, Vehicule, Lieu, Section et UniteReservable permettent d’ajouter de nouvelles spécialisations sans modifier directement les classes générales.
+                     Le principe est toutefois appliqué partiellement puisque certains contrôleurs utilisent encore des classes concrètes propres aux différents modes de transport.               
+                     </td>
             </tr>
 
             <tr>
                 <td>LSP</td>
                 <td class="placeholder">
-                    [Expliquer]
+                    Les spécialisations peuvent être utilisées à travers leurs classes parentes sans modifier le rôle attendu de celles-ci. Par exemple, Vol, Itineraire et Trajet peuvent être manipulés comme des Voyage.               
                 </td>
             </tr>
 
             <tr>
                 <td>ISP</td>
                 <td class="placeholder">
-                    [Expliquer ou indiquer pourquoi ce principe
-                    est peu applicable dans le design.]
+                    Ce principe est peu applicable au design actuel, puisque le système ne repose pas sur un ensemble d’interfaces imposant de nombreuses opérations aux classes clientes.                
                 </td>
             </tr>
 
             <tr>
                 <td>DIP</td>
                 <td class="placeholder">
-                    [Expliquer]
+                    Le design dépend en partie des abstractions regroupées dans Commun, mais certains contrôleurs utilisent encore directement des classes concrètes des domaines aérien, naval et ferroviaire. Le principe d’inversion des dépendances est donc appliqué partiellement.                
                 </td>
             </tr>
 
             <tr>
                 <td>CRP</td>
                 <td class="placeholder">
-                    [Expliquer]
-                </td>
+                    L’héritage est utilisé lorsqu’une véritable relation de spécialisation existe. Pour les autres collaborations, le design privilégie les associations et la composition, ce qui favorise la réutilisation sans créer de hiérarchies d’héritage inutiles.               
+                 </td>
             </tr>
 
             <tr>
                 <td>ADP</td>
                 <td class="placeholder">
-                    [Expliquer l'absence de cycles entre les paquets.]
+                    Les dépendances entre les paquets ne forment aucun cycle.
                 </td>
             </tr>
 
             <tr>
                 <td>SDP</td>
                 <td class="placeholder">
-                    [Expliquer les dépendances vers des paquets plus stables.]
+                    Les dépendances vont globalement vers des paquets plus stables : Presentation (I = 1) dépend de Application (I ≈ 0,83), qui dépend de paquets ayant une instabilité de 0,50 ou de Commun (I = 0). Les paquets spécialisés dépendent également de Commun, le paquet le plus stable.                
                 </td>
             </tr>
 
             <tr>
                 <td>SAP</td>
                 <td class="placeholder">
-                    [Expliquer la relation entre stabilité et abstraction.]
-                </td>
+                    Le paquet `Commun` est le plus stable du système et présente un niveau d’abstraction relativement élevé. Il respecte donc globalement le principe SAP, même s’il n’est pas entièrement abstrait, ce qui explique sa distance de `0,29` par rapport à la Main Sequence.               
+                 </td>
             </tr>
 
         </table>
 
     </section>
 
-
-    <!-- ========================================================= -->
-    <!-- 8. CONCLUSION -->
-    <!-- ========================================================= -->
-
-    <section>
-
-        <h2>8. Conclusion</h2>
-
-        <p class="placeholder">
-            [Résumer les principaux résultats du devoir, les améliorations
-            apportées au design et les conclusions de l'analyse de qualité.]
-        </p>
-
-    </section>
 
 </body>
 
