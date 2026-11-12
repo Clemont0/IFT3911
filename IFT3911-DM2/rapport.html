@@ -394,21 +394,47 @@
         <h3>4.1 Fichiers concernés</h3>
 
         <ul>
-            <li class="file">[reseau-petri.ext]</li>
-            <li class="file">images/reseau-petri.png</li>
+            <li class="file">
+                <a href="ReseauDePetri/ReseauPetri.xml">
+                ReseauPetri.xml
+                </a>
+            </li>
+            <li class="file">
+                <a href="ReseauDePetri/ReseauPetri.png">
+                ReseauPetri.png
+                </a>
+            </li>
+            <li class="file">
+                <a href="ReseauDePetri/DiagrammeCouverture.png">
+                    DiagrammeCouverture.png
+                </a>
+            </li>
         </ul>
 
 
         <h3>4.2 Modélisation</h3>
 
         <p class="placeholder">
-            [Décrire brièvement le réseau de Pétri réalisé.]
+            Le réseau de Pétri modélise la circulation des voitures dans un tunnel reliant Montréal à la Rive-Sud. Deux
+            directions de circulation sont représentées : Montréal vers la Rive-Sud et Rive-Sud vers Montréal.
+            Les places "Entrée Montréal" et "Entrée Rive-Sud" représentent les voitures en attente de chaque côté. Chaque 
+            transition d'entrée possède un arc de retour vers sa place d'origine. Ainsi, quand une voiture entre dans le tunnel,
+            le jeton de la place d'en,trée est directement restitué. Cela permet de représenter le flux continu de voitures demandé.
+
+            la place "Tunnel Disponible" contrôle l'accès au tunnel. Elle contient initialement un jeton, consommé quant une voiture
+            entre dans l'une des deux directions. Ce jeton est restitué uniquement lorsque la voiture quitte le tunnel. Ainsi, aucune 
+            autre voiture be peut entre tant que le tunnel est occupé. Deux places supplémentaires, "Feu vert Montréal" et "Feu vert Rive-Sud",
+            permettent de contrôler l'alternance des directions. initialement, seul le feu de Montréal est vert. Qiant une voiture termine
+            sa traversée vers la Rive-Sud, le feu de la Rive-Sud devient vert. Le même fonctionnement s'applique dans le sens inverse.
+
+            Enfin, les tansitions "Arrivée à la Rive-Sud" et "Arrivée à Montréal" retirent les jetons des places de sortie.
+            elles représentent les voitures qui quittent le système après leur traversée.
         </p>
 
         <figure>
 
             <img
-                src="images/reseau-petri.png"
+                src="ReseauDePetri/ReseauPetri.png"
                 alt="Réseau de Pétri du tunnel"
             >
 
@@ -422,7 +448,30 @@
         <h3>4.3 Loi de conservation</h3>
 
         <p class="placeholder">
-            [Démontrer que seule une voiture peut être présente dans le tunnel.]
+            Pour démontrée qu'une seul oiture peut être présente dans le tunnel à la fois, nous considérons
+            les trois places suivantes : 
+            <ul>
+                <li>P2 : Dans Tunnel vers Sud ;</li>
+                <li>P5 : Dans tunnel vers Montréal ;</li>
+                <li>P7 : Tunnel Disponible.</li>
+            </ul>
+            Initialement, le tunnel est disponible et aucune voiture ne s'y trouve. Nous avons donc:
+            M0(P2) + M0(P5) + M0(P7) = 0 + 0 + 1 = 1
+
+            Quand une transition d'entrée est déclenchée, elle consomme un jeton de "Tunnel Disponible" et 
+            produit un jeton dans la place correspondant à la direction de circulation. 
+            Quand une transition de sortie est déclenchée, elle retire le jeton de la place représentant
+            la voiture dans le tunnel et restitue un jeton dans "Tunnel Disponible"
+            Les autres transitions ne modifient aucune de ces trois places. LA somme des jetons est donc
+            conservée pour toutes les transitions : 
+            M(P2) + M(P5) + M(P7) = 1
+
+            Puisque le nombre de jetons est toujours positif ou nul nous obtenons : 
+            M(P2) + M(P5) &le; 1
+
+            Donc les deux places représentant les voitures à l'intérieur du tunnel ne peuvent jamais
+            contenir en même temps un jeton. Le réseau garantit donc qu'au plus, une voiture se trouve
+            dans le tunnel à un instant donné
         </p>
 
 
@@ -431,7 +480,7 @@
         <figure>
 
             <img
-                src="images/graphe-couverture.png"
+                src="ReseauDePetri/DiagrammeCouverture.png"
                 alt="Graphe de couverture"
             >
 
@@ -440,9 +489,31 @@
             </figcaption>
 
         </figure>
-
+        <p>
+            Les marquages sont représentés par des vecteurs de neuf composantes correspondant aux neuf
+            places du réseau, dans l'ordre indiqué dans la légende du graphe. Le marquage initial est:
+            M0 = (1,0,0,1,0,0,,1,1,0)
+        </p>
+        
         <p class="placeholder">
-            [Justifier l'équité du système et l'absence de famine.]
+            <h4>Équité du système</h4>
+            Le graphe de couverture met en évidence l'alternance des directions de circulation. Initialement, 
+            le feu de Montréal est vert, une voiture peut donc entrer depuis Montréal. Quand cette voiture 
+            quitte le tunnel à la Rive-Sud, le feu de Montréal devient rouge et celui de la Rive-Sud vert.
+
+            Une voiture provenant de la Rive-Sud peut alors entréer dans le tunnel. Après sa sortie Montréal 
+            c'est le feu de Montréal qui repasse au vert.Les transitions d'entrée des deux directions sont 
+            donc autorisées alternativement. Une même direction ne peut pas effectuer deux entrées consécutives 
+            sans qu'un passage dans la direction opposée n'ait lieu
+            
+            <h4>Absence de famine</h4>
+            L'alternance des feux empêche une direction de monopoliser le tunnel. Quant une voiture termine 
+            sa traversée, le passage suivant est attribué à la direction opposé. En supposant que les transitions 
+            de sortie franchissables finissent par être exécutées, chaque direction obtient donc régulièrement
+            l'autorisation d'entrer dans le tunnel. Aucune des deux directions ne peut être indéfiniment 
+            privée de passage au profit de l'autre. Nous pouvons en déduire que le système est équitable 
+            et qu'il ne présente pas de famine entre les deux directiosn de circulation 
+            sous cette hypothèse de progression.
         </p>
 
     </section>
@@ -609,16 +680,55 @@
         <h4>6.2.2 Modifications apportées</h4>
 
         <p class="placeholder">
-            [Présenter les modifications apportées au diagramme de séquence
-            de paiement.]
+            Les opérations des contôleurs ont été renommées pour mieux refléter leurs responsabilités. Le ControleurVoyage distingue désormais 
+            les recherches aériennes, navales et ferroviaires grâce aux méthodes rechercherVoyageAerien(),rechercherVoyageNaval() et rechercherVoyageFerroviaire().
+            Leurs paramètres ont également été spécialisés selon les types de lieux concernés. 
+
+            Dans ControleurReservation, les opérations ont été distinguées en reserverSiege() et reserverCabine(). 
+            Le ControleurPaiement possède maintenant une opération payerReservation() dont les paramètres précisent les informations nécessaires au paiement.
+
+            Les relations entre les contrôleurs et les autres composants ont été revues afin de représenter leurs dépendances. 
+            Une nouvelle classe InterfacePaiement a été ajoutée pour regrouper les interactions avec l'utilisateur durant le paiement.
+
+            Une classe SystemeReservation a également été introduite. Elle regroupe les collections de voyages, de lieux, de compagnies et de lignes de train, 
+            mais aussi les opérations permettant de gérer et de rechercher ces éléments.
+
+            La hiérarchie des classes a été réorganisée pour mieux répartir les attributs communs. Les classes Vehicule, Voyage et Lieu ont été définies comme
+            abstraites alors que la classe Ville a été supprimée.
+
+            Dans Reservation les opérations estExpiree() et confirmer() ont été remplacées par verifierValidite() et mettreAJourStatut(). Pour finir l'attribut montant
+            a été ajouté à la classe Paiement.
         </p>
 
 
         <h4>6.2.3 Justification</h4>
 
         <p class="placeholder">
-            [Justifier les modifications apportées au diagramme de séquence
-            de paiement.]
+            Les modifications apportées visent à améliorer la modularité, la réutilisabilité et la cohérence du système 
+            tout en respectant les principes de conception orientée objet.
+
+            La spécialisation des méthodes des contrôleurs permet de rendre leurs responsabilités plus explicites. Par exemple, 
+            la distinction entre les recherches aériennes, navales et ferroviaires évite de regrouper plusieurs comportements différents sous une même
+            opération générique. Elle permet également d'utiliser des paramètres adaptés à chaque type de voyage.
+        
+            L'ajout des dépendances entre les contrôleurs et les classes concernées permet de mieux représenter les collaborations nécessaires 
+            à l'exécution des fonctionnalités du système.
+        
+            La classe SystemeReservation donne un point d'accès central aux données et aux opérations de gestion. Les collections qu'elle possède rendent
+            explicite le stockage des voyages, des lieux, des compagnies et des lignes de train.
+        
+            L'ajout de cette classe permet aussi de distinguer la coordination des requêtes assurée par les contrôleurs de la gestion des données du système.
+            Cette séparation vise à favoriser une meilleure cohésion et à limiter le couplage entre les composants.
+        
+            La réorganisation de l'héritage permet de factoriser les attributs communs au sein des classes parentes.
+            L'utilisation de classes abstraites pour Vehicule, Voyage et Lieu évite de représenter directement des objets trop génériques et permet aux sous-classes
+            de définir leurs particularités. Ces choix favorisent la réutilisabilité et réduisent la duplication des éléments du modèle.
+        
+            L'ajout de la classe InterfacePaiement permet de distinguer les interactions avec l'utilisateur des traitements liés à la réservation et au paiement.
+            Cette séparation améliore la modularité et rend les responsabilités des composants plus claires.
+        
+            Enfin les ajustements des opérations de Reservation clarifient la vérification et la mise à jour de son statut. 
+            L'ajout du montant dans Paiement permet de représenter explicitement une information nécessaire au traitement d'un paiement
         </p>
 
 
@@ -661,15 +771,31 @@
         <h5>Modifications apportées</h5>
         
         <p class="placeholder">
-            [Présenter les modifications apportées au diagramme de séquence
-            de paiement.]
+            La recherche de réservation est désormais effectuée par le ControleurPaiement auprès du GestionnaireReservation. 
+            Une vérification de la validité de la réservation a été ajoutée grâce à l'opération verifierValidite() qui retourne un résultat booléen.
+        
+            Les différents scénarios ont été précisés notamment pour les réservations invalides ou expirées, les réservations
+            déjà confirmées et les paiements acceptés ou refusés.
+        
+            La création de l'objet Paiement est maintenant représentée explicitement. La création du Passager a également été déplacée 
+            dans la branche correspondant à un paiement accepté. Pour finir l'opération confirmer() a été remplacée par 
+            mettreAJourStatut(CONFIRMEE) et les messages de retour ont été clarifiés.
         </p>
         
         <h5>Justification</h5>
         
         <p class="placeholder">
-            [Justifier les modifications apportées au diagramme de séquence
-            de paiement.]
+            Ces modifications permettent de mieux répartir les responsabilités entre les composants et d'améliorer la cohésion du système.
+        
+            InterfacePaiement est responsable des interactions avec l'utilisateur comme la saisie des informations et l'affichage des résultats.
+            La recherche et la validation de la réservation sont confiées aux bon composants approprié alors que
+            ControleurPaiement coordonne les différentes étapes du processus.
+        
+            L'ajout de verifierValidite() et des retours booléens permet de rendre les conditions des fragments alternatifs explicites 
+            et donc d'éviter les ambiguïtés dans le déroulement du paiement.
+        
+            Pour finir la création du Passager uniquement après l'acceptation du paiement garantit la cohérence entre le diagramme 
+            et le scénario décrit. La mise à jour du statut de la réservation permet également de représenter clairement sa confirmation.
         </p>
         
         
