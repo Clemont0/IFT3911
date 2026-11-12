@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<net xmlns="http://pdv.cs.tu-berlin.de/TimeNET/schema/eDSPN" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="0" netclass="eDSPN" xsi:schemaLocation="http://pdv.cs.tu-berlin.de/TimeNET/schema/eDSPN etc/schemas/eDSPN.xsd">
+    <place id="EntréeMontréal" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="180" y="194"/>
+        <label id="LEntréeMontréal" text="EntréeMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="SortieàMontréal" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="179" y="385"/>
+        <label id="LSortieàMontréal" text="SortieàMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="DansTunnelversSud" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="405" y="195"/>
+        <label id="LDansTunnelversSud" text="DansTunnelversSud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="FeuvertMontréal" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="404" y="104"/>
+        <label id="LFeuvertMontréal" text="FeuvertMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="TunnelDisponible" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="404" y="289"/>
+        <label id="LTunnelDisponible" text="TunnelDisponible" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="DanstunnelversMontréal" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="405" y="390"/>
+        <label id="LDanstunnelversMontréal" text="DanstunnelversMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="FeuvertRive-Sud" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="404" y="484"/>
+        <label id="LFeuvertRive-Sud" text="FeuvertRive-Sud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="EntréeRive-Sud" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="630" y="390"/>
+        <label id="LEntréeRive-Sud" text="EntréeRive-Sud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <place id="SortieàlaRive-Sud" initialMarking="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="node">
+        <graphics orientation="0" x="630" y="195"/>
+        <label id="LSortieàlaRive-Sud" text="SortieàlaRive-Sud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </place>
+    <immediateTransition id="EntréeversleSud" priority="1" type="node" weight="1">
+        <graphics orientation="0" x="270" y="195"/>
+        <label id="LEntréeversleSud" text="EntréeversleSud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </immediateTransition>
+    <immediateTransition id="SortieversleSud" priority="1" type="node" weight="1">
+        <graphics orientation="0" x="525" y="195"/>
+        <label id="LSortieversleSud" text="SortieversleSud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </immediateTransition>
+    <immediateTransition id="EntréeversMontréal" priority="1" type="node" weight="1">
+        <graphics orientation="0" x="525" y="390"/>
+        <label id="LEntréeversMontréal" text="EntréeversMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </immediateTransition>
+    <immediateTransition id="SortieversMontréal" priority="1" type="node" weight="1">
+        <graphics orientation="0" x="270" y="390"/>
+        <label id="LSortieversMontréal" text="SortieversMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </immediateTransition>
+    <immediateTransition id="ArrivéeàlaRive-Sud" priority="1" type="node" weight="1">
+        <graphics orientation="0" x="732" y="194"/>
+        <label id="LArrivéeàlaRive-Sud" text="ArrivéeàlaRive-Sud" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </immediateTransition>
+    <immediateTransition id="ArrivéeàMontréal" priority="1" type="node" weight="1">
+        <graphics orientation="0" x="94" y="389"/>
+        <label id="LArrivéeàMontréal" text="ArrivéeàMontréal" type="text">
+            <graphics orientation="0" x="0" y="0"/>
+        </label>
+    </immediateTransition>
+    <arc fromNode="EntréeMontréal" id="EntréeMontréaltoEntréeversleSud" toNode="EntréeversleSud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IEntréeMontréaltoEntréeversleSud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="EntréeversleSud" id="EntréeversleSudtoEntréeMontréal" toNode="EntréeMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IEntréeversleSudtoEntréeMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="EntréeversleSud" id="EntréeversleSudtoDansTunnelversSud" toNode="DansTunnelversSud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IEntréeversleSudtoDansTunnelversSud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="DansTunnelversSud" id="DansTunnelversSudtoSortieversleSud" toNode="SortieversleSud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IDansTunnelversSudtoSortieversleSud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="EntréeRive-Sud" id="EntréeRive-SudtoEntréeversMontréal" toNode="EntréeversMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IEntréeRive-SudtoEntréeversMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="EntréeversMontréal" id="EntréeversMontréaltoDanstunnelversMontréal" toNode="DanstunnelversMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IEntréeversMontréaltoDanstunnelversMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="DanstunnelversMontréal" id="DanstunnelversMontréaltoSortieversMontréal" toNode="SortieversMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IDanstunnelversMontréaltoSortieversMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieversMontréal" id="SortieversMontréaltoSortieàMontréal" toNode="SortieàMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieversMontréaltoSortieàMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieversleSud" id="SortieversleSudtoSortieàlaRive-Sud" toNode="SortieàlaRive-Sud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieversleSudtoSortieàlaRive-Sud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieversMontréal" id="SortieversMontréaltoFeuvertMontréal" toNode="FeuvertMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieversMontréaltoFeuvertMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="FeuvertMontréal" id="FeuvertMontréaltoEntréeversleSud" toNode="EntréeversleSud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IFeuvertMontréaltoEntréeversleSud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="TunnelDisponible" id="TunnelDisponibletoEntréeversleSud" toNode="EntréeversleSud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ITunnelDisponibletoEntréeversleSud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieversleSud" id="SortieversleSudtoTunnelDisponible" toNode="TunnelDisponible" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieversleSudtoTunnelDisponible" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieversMontréal" id="SortieversMontréaltoTunnelDisponible" toNode="TunnelDisponible" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieversMontréaltoTunnelDisponible" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="TunnelDisponible" id="TunnelDisponibletoEntréeversMontréal" toNode="EntréeversMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ITunnelDisponibletoEntréeversMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="FeuvertRive-Sud" id="FeuvertRive-SudtoEntréeversMontréal" toNode="EntréeversMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IFeuvertRive-SudtoEntréeversMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieversleSud" id="SortieversleSudtoFeuvertRive-Sud" toNode="FeuvertRive-Sud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieversleSudtoFeuvertRive-Sud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="EntréeversMontréal" id="EntréeversMontréaltoEntréeRive-Sud" toNode="EntréeRive-Sud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="IEntréeversMontréaltoEntréeRive-Sud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieàMontréal" id="SortieàMontréaltoArrivéeàMontréal" toNode="ArrivéeàMontréal" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieàMontréaltoArrivéeàMontréal" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+    <arc fromNode="SortieàlaRive-Sud" id="SortieàlaRive-SudtoArrivéeàlaRive-Sud" toNode="ArrivéeàlaRive-Sud" type="connector" weight="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]">
+        <inscription id="ISortieàlaRive-SudtoArrivéeàlaRive-Sud" text="[pipe.views.MarkingView[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.0,border=,flags=0,maximumSize=,minimumSize=,preferredSize=]]" type="inscriptionText">
+            <graphics x="0" y="0"/>
+        </inscription>
+    </arc>
+</net>
